@@ -1,0 +1,951 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Transfer & Payments - EliteBank Portal</title>
+    <link rel="stylesheet" href="../css/main.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<script type="module" src="https://static.rocket.new/rocket-web.js?_cfg=https%3A%2F%2Felitebank9583back.builtwithrocket.new&_be=https%3A%2F%2Fapplication.rocket.new&_v=0.1.8"></script>
+</head>
+<body class="min-h-screen bg-gradient-to-br from-primary-50 via-background to-accent-50 font-body">
+    <!-- Dashboard Header -->
+    <header class="w-full bg-surface/90 backdrop-blur-md border-b border-border shadow-layered sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <!-- Logo & Welcome -->
+                <div class="flex items-center space-x-4">
+                    <div class="w-10 h-10 bg-gradient-to-br from-primary to-primary-700 rounded-lg flex items-center justify-center">
+                        <svg class="w-6 h-6 text-surface" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M12 2L2 7v10c0 5.55 3.84 9.74 9 11 5.16-1.26 9-5.45 9-11V7l-10-5z"/>
+                        </svg>
+                    </div>
+                    <div>
+                        <h1 class="text-xl font-heading font-semibold text-primary">EliteBank</h1>
+                        <p class="text-xs text-text-secondary">Welcome back, John</p>
+                    </div>
+                </div>
+
+                <!-- Navigation & User Profile -->
+                <div class="flex items-center space-x-6">
+                    <!-- Quick Navigation -->
+                    <nav class="hidden md:flex items-center space-x-4">
+                        <a href="personal_dashboard.html" class="px-3 py-2 text-sm font-medium text-text-secondary hover:text-primary transition-colors">
+                            Dashboard
+                        </a>
+                        <a href="accounts_overview.html" class="px-3 py-2 text-sm font-medium text-text-secondary hover:text-primary transition-colors">
+                            Accounts
+                        </a>
+                        <a href="transfer_payments.html" class="px-3 py-2 text-sm font-medium text-primary bg-primary-50 rounded-lg">
+                            Transfers
+                        </a>
+                        <a href="investment_portfolio.html" class="px-3 py-2 text-sm font-medium text-text-secondary hover:text-primary transition-colors">
+                            Investments
+                        </a>
+                    </nav>
+
+                    <!-- Notifications -->
+                    <div class="relative">
+                        <button id="notificationBtn" class="relative p-2 text-text-secondary hover:text-primary transition-colors">
+                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
+                                <path d="M10 2a6 6 0 00-6 6v3.586l-.707.707A1 1 0 004 14h12a1 1 0 00.707-1.707L16 11.586V8a6 6 0 00-6-6zM10 18a3 3 0 01-3-3h6a3 3 0 01-3 3z"/>
+                            </svg>
+                            <span class="absolute -top-1 -right-1 h-4 w-4 bg-error-500 text-surface text-xs rounded-full flex items-center justify-center">3</span>
+                        </button>
+                    </div>
+
+                    <!-- User Profile -->
+                    <div class="flex items-center space-x-3">
+                        <div class="hidden sm:block text-right">
+                            <p class="text-sm font-medium text-primary">John Sterling</p>
+                            <p class="text-xs text-text-secondary">Premium Member</p>
+                        </div>
+                        <div class="relative">
+                            <button id="profileBtn" class="w-10 h-10 rounded-full overflow-hidden border-2 border-secondary-200 hover:border-secondary-400 transition-colors">
+                                <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Profile" class="w-full h-full object-cover" onerror="this.src='https://images.unsplash.com/photo-1584824486509-112e4181ff6b?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'; this.onerror=null;" />
+                            </button>
+                            <!-- Profile Dropdown -->
+                            <div id="profileDropdown" class="hidden absolute right-0 mt-2 w-48 bg-surface rounded-lg shadow-floating border border-border z-50">
+                                <div class="py-2">
+                                    <a href="javascript:void(0)" class="block px-4 py-2 text-sm text-text-primary hover:bg-primary-50 transition-colors">
+                                        Account Settings
+                                    </a>
+                                    <a href="javascript:void(0)" class="block px-4 py-2 text-sm text-text-primary hover:bg-primary-50 transition-colors">
+                                        Security
+                                    </a>
+                                    <a href="javascript:void(0)" class="block px-4 py-2 text-sm text-text-primary hover:bg-primary-50 transition-colors">
+                                        Support
+                                    </a>
+                                    <hr class="my-2 border-border" />
+                                    <button id="logoutBtn" class="block w-full text-left px-4 py-2 text-sm text-error-600 hover:bg-error-50 transition-colors">
+                                        Sign Out
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Transfer & Payments Content -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <!-- Page Header -->
+        <div class="mb-8">
+            <h1 class="text-3xl font-heading font-bold text-primary mb-2">Transfer & Payments</h1>
+            <p class="text-text-secondary">Secure money transfers and payment processing with real-time validation</p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            <!-- Transfer Form -->
+            <div class="lg:col-span-2">
+                <section class="glass-card rounded-2xl p-6 shadow-floating fade-in">
+                    <div class="flex items-center justify-between mb-6">
+                        <h2 class="text-xl font-heading font-semibold text-primary">New Transfer</h2>
+                        <div class="flex items-center space-x-2">
+                            <div class="w-8 h-8 bg-success-100 rounded-full flex items-center justify-center">
+                                <span class="text-xs font-medium text-success-600">1</span>
+                            </div>
+                            <div class="w-12 h-1 bg-success-200 rounded"></div>
+                            <div class="w-8 h-8 bg-border rounded-full flex items-center justify-center">
+                                <span class="text-xs font-medium text-text-secondary">2</span>
+                            </div>
+                            <div class="w-12 h-1 bg-border rounded"></div>
+                            <div class="w-8 h-8 bg-border rounded-full flex items-center justify-center">
+                                <span class="text-xs font-medium text-text-secondary">3</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <form id="transferForm" class="space-y-6">
+                        <!-- Transfer Type Selection -->
+                        <div>
+                            <label class="block text-sm font-medium text-text-primary mb-3">Transfer Type</label>
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                                <label class="transfer-type-option cursor-pointer">
+                                    <input type="radio" name="transferType" value="internal" class="sr-only" checked />
+                                    <div class="p-4 border-2 border-accent bg-accent-50 rounded-lg transition-all duration-200 hover:bg-accent-100">
+                                        <div class="flex items-center space-x-3">
+                                            <svg class="w-5 h-5 text-accent" fill="currentColor" viewBox="0 0 20 20">
+                                                <path d="M3 4a1 1 0 011-1h12a1 1 0 011 1v2a1 1 0 01-1 1H4a1 1 0 01-1-1V4zM3 10a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H4a1 1 0 01-1-1v-6zM14 9a1 1 0 00-1 1v6a1 1 0 001 1h2a1 1 0 001-1v-6a1 1 0 00-1-1h-2z"/>
+                                            </svg>
+                                            <div>
+                                                <p class="text-sm font-medium text-primary">Between Accounts</p>
+                                                <p class="text-xs text-text-secondary">Instant & Free</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </label>
+                                
+                                <label class="transfer-type-option cursor-pointer">
+                                    <input type="radio" name="transferType" value="external" class="sr-only" />
+                                    <div class="p-4 border-2 border-border bg-surface rounded-lg transition-all duration-200 hover:bg-primary-50">
+                                        <div class="flex items-center space-x-3">
+                                            <svg class="w-5 h-5 text-primary" fill="currentColor" viewBox="0 0 20 20">
+                                                <path d="M2 6a2 2 0 012-2h12a2 2 0 012 2v2a2 2 0 01-2 2H4a2 2 0 01-2-2V6zM14 14a2 2 0 012-2h2a1 1 0 011 1v1a2 2 0 01-2 2h-2a2 2 0 01-2-2v-1z"/>
+                                            </svg>
+                                            <div>
+                                                <p class="text-sm font-medium text-primary">External Transfer</p>
+                                                <p class="text-xs text-text-secondary">2 day - 0.045 BTC fee</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </label>
+                                
+                                <label class="transfer-type-option cursor-pointer">
+                                    <input type="radio" name="transferType" value="crypto" class="sr-only" />
+                                    <div class="p-4 border-2 border-border bg-surface rounded-lg transition-all duration-200 hover:bg-primary-50">
+                                        <div class="flex items-center space-x-3">
+                                            <svg class="w-5 h-5 text-warning-600" fill="currentColor" viewBox="0 0 20 20">
+                                                <path d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.736 6.979C9.208 6.193 9.696 6 10 6s.792.193 1.264.979L12 8l-1.264-.979c-.16-.256-.464-.521-1-.521s-.84.265-1 .521L8 8l.736-1.021z"/>
+                                            </svg>
+                                            <div>
+                                                <p class="text-sm font-medium text-primary">BTC Deposit</p>
+                                                <p class="text-xs text-text-secondary">Crypto transfer</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- From Account Selection -->
+                        <div>
+                            <label for="fromAccount" class="block text-sm font-medium text-text-primary mb-2">From Account</label>
+                            <select id="fromAccount" name="fromAccount" class="w-full px-4 py-3 border border-border rounded-lg bg-surface focus:ring-2 focus:ring-accent focus:border-transparent transition-colors">
+                                <option value>Select source account</option>
+                                <option value="checking">Primary Checking - $47,832.50</option>
+                                <option value="savings">High-Yield Savings - $125,647.89</option>
+                                <option value="business">Business Checking - $89,247.15</option>
+                                <option value="investment">Investment Portfolio - $342,156.73</option>
+                            </select>
+                        </div>
+
+                        <!-- To Account/Recipient -->
+                        <div id="recipientSection">
+                            <label for="toAccount" class="block text-sm font-medium text-text-primary mb-2">To Account</label>
+                            <div class="relative">
+                                <select id="toAccount" name="toAccount" class="w-full px-4 py-3 border border-border rounded-lg bg-surface focus:ring-2 focus:ring-accent focus:border-transparent transition-colors">
+                                    <option value>Select destination account</option>
+                                    <option value="checking">Primary Checking</option>
+                                    <option value="savings">High-Yield Savings</option>
+                                    <option value="business">Business Checking</option>
+                                    <option value="cd">12-Month CD</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <!-- External Transfer Fields (hidden by default) -->
+                        <div id="externalFields" class="hidden space-y-4">
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div>
+                                    <label for="recipientName" class="block text-sm font-medium text-text-primary mb-2">Recipient Name</label>
+                                    <input type="text" id="recipientName" name="recipientName" placeholder="Full legal name" class="w-full px-4 py-3 border border-border rounded-lg bg-surface focus:ring-2 focus:ring-accent focus:border-transparent transition-colors" />
+                                </div>
+                                <div>
+                                    <label for="recipientBank" class="block text-sm font-medium text-text-primary mb-2">Bank Name</label>
+                                    <input type="text" id="recipientBank" name="recipientBank" placeholder="Recipient bank name" class="w-full px-4 py-3 border border-border rounded-lg bg-surface focus:ring-2 focus:ring-accent focus:border-transparent transition-colors" />
+                                </div>
+                            </div>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div>
+                                    <label for="accountNumber" class="block text-sm font-medium text-text-primary mb-2">Account Number</label>
+                                    <input type="text" id="accountNumber" name="accountNumber" placeholder="Recipient account number" class="w-full px-4 py-3 border border-border rounded-lg bg-surface focus:ring-2 focus:ring-accent focus:border-transparent transition-colors" />
+                                </div>
+                                <div>
+                                    <label for="routingNumber" class="block text-sm font-medium text-text-primary mb-2">Routing Number</label>
+                                    <input type="text" id="routingNumber" name="routingNumber" placeholder="9-digit routing number" class="w-full px-4 py-3 border border-border rounded-lg bg-surface focus:ring-2 focus:ring-accent focus:border-transparent transition-colors" />
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Crypto Fields (hidden by default) -->
+                        <div id="cryptoFields" class="hidden space-y-4">
+                            <div>
+                                <label for="btcAddress" class="block text-sm font-medium text-text-primary mb-2">Bitcoin Wallet Address</label>
+                                <input type="text" id="btcAddress" name="btcAddress" placeholder="Bitcoin wallet address (starts with 1, 3, or bc1)" class="w-full px-4 py-3 border border-border rounded-lg bg-surface focus:ring-2 focus:ring-accent focus:border-transparent transition-colors" />
+                            </div>
+                            <div class="bg-warning-50 border border-warning-200 rounded-lg p-4">
+                                <div class="flex items-start space-x-3">
+                                    <svg class="w-5 h-5 text-warning-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clip-rule="evenodd"/>
+                                    </svg>
+                                    <div>
+                                        <h4 class="text-sm font-medium text-warning-800">Cryptocurrency Transfer Notice</h4>
+                                        <p class="text-xs text-warning-700 mt-1">Transfers over $10,000 require additional compliance verification. Processing may take 3-5 business days.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Amount Input -->
+                        <div>
+                            <label for="amount" class="block text-sm font-medium text-text-primary mb-2">Transfer Amount</label>
+                            <div class="relative">
+                                <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                                    <span class="text-text-secondary text-lg">$</span>
+                                </div>
+                                <input type="number" id="amount" name="amount" placeholder="0.00" step="0.01" min="0.01" class="w-full pl-8 pr-4 py-3 border border-border rounded-lg bg-surface focus:ring-2 focus:ring-accent focus:border-transparent transition-colors" />
+                                <div class="absolute inset-y-0 right-0 pr-3 flex items-center">
+                                    <span id="availableBalance" class="text-xs text-text-secondary">Available: $0.00</span>
+                                </div>
+                            </div>
+                            <div id="amountError" class="hidden mt-2"></div>
+                        </div>
+
+                        <!-- Transfer Description -->
+                        <div>
+                            <label for="description" class="block text-sm font-medium text-text-primary mb-2">Description (Optional)</label>
+                            <input type="text" id="description" name="description" placeholder="Payment description or memo" class="w-full px-4 py-3 border border-border rounded-lg bg-surface focus:ring-2 focus:ring-accent focus:border-transparent transition-colors" />
+                        </div>
+
+                        <!-- Transfer Schedule -->
+                        <div>
+                            <label class="block text-sm font-medium text-text-primary mb-3">Transfer Schedule</label>
+                            <div class="flex space-x-4">
+                                <label class="flex items-center cursor-pointer">
+                                    <input type="radio" name="schedule" value="immediate" class="sr-only" checked />
+                                    <div class="w-5 h-5 border-2 border-accent bg-accent rounded-full flex items-center justify-center mr-2">
+                                        <div class="w-2 h-2 bg-surface rounded-full"></div>
+                                    </div>
+                                    <span class="text-sm text-primary">Transfer Now</span>
+                                </label>
+                                <label class="flex items-center cursor-pointer">
+                                    <input type="radio" name="schedule" value="future" class="sr-only" />
+                                    <div class="w-5 h-5 border-2 border-border rounded-full flex items-center justify-center mr-2">
+                                        <div class="w-2 h-2 bg-transparent rounded-full"></div>
+                                    </div>
+                                    <span class="text-sm text-primary">Schedule for Later</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- Future Date (hidden by default) -->
+                        <div id="futureDateField" class="hidden">
+                            <label for="futureDate" class="block text-sm font-medium text-text-primary mb-2">Transfer Date</label>
+                            <input type="date" id="futureDate" name="futureDate" class="w-full px-4 py-3 border border-border rounded-lg bg-surface focus:ring-2 focus:ring-accent focus:border-transparent transition-colors" />
+                        </div>
+
+                        <!-- Error Messages Container -->
+                        <div id="errorContainer" class="hidden"></div>
+
+                        <!-- Submit Button -->
+                        <div class="flex space-x-4 pt-4">
+                            <button type="button" id="reviewTransferBtn" class="flex-1 bg-gradient-to-r from-secondary to-secondary-700 text-surface py-3 px-6 rounded-lg font-medium hover:from-secondary-700 hover:to-secondary-800 transition-all duration-200 btn-press">
+                                Review Transfer
+                            </button>
+                            <button type="button" class="px-6 py-3 border border-border text-primary rounded-lg font-medium hover:bg-primary-50 transition-colors" onclick="resetForm()">
+                                Clear Form
+                            </button>
+                        </div>
+                    </form>
+                </section>
+            </div>
+
+            <!-- Quick Actions & Recent Transfers -->
+            <div class="space-y-8">
+                <!-- Quick Actions -->
+                <section class="glass-card rounded-2xl p-6 shadow-floating fade-in">
+                    <h2 class="text-xl font-heading font-semibold text-primary mb-6">Quick Actions</h2>
+                    <div class="space-y-4">
+                        <button class="w-full flex items-center justify-between p-4 bg-gradient-to-r from-accent to-accent-700 text-surface rounded-lg hover:from-accent-700 hover:to-accent-800 transition-all duration-200 btn-press" onclick="loadSavedRecipient()">
+                            <div class="flex items-center space-x-3">
+                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                                    <path d="M9 6a3 3 0 11-6 0 3 3 0 016 0zM17 6a3 3 0 11-6 0 3 3 0 016 0zM12.93 17c.046-.327.07-.66.07-1a6.97 6.97 0 00-1.5-4.33A5 5 0 0119 16v1h-6.07zM6 11a5 5 0 015 5v1H1v-1a5 5 0 015-5z"/>
+                                </svg>
+                                <span class="font-medium">Saved Recipients</span>
+                            </div>
+                            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"/>
+                            </svg>
+                        </button>
+                        
+                        <button class="w-full flex items-center justify-between p-4 bg-gradient-to-r from-primary to-primary-700 text-surface rounded-lg hover:from-primary-700 hover:to-primary-800 transition-all duration-200 btn-press" onclick="setupRecurringTransfer()">
+                            <div class="flex items-center space-x-3">
+                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M4 2a1 1 0 011 1v2.101a7.002 7.002 0 0111.601 2.566 1 1 0 11-1.885.666A5.002 5.002 0 005.999 7H9a1 1 0 010 2H4a1 1 0 01-1-1V3a1 1 0 011-1zm.008 9.057a1 1 0 011.276.61A5.002 5.002 0 0014.001 13H11a1 1 0 110-2h5a1 1 0 011 1v5a1 1 0 11-2 0v-2.101a7.002 7.002 0 01-11.601-2.566 1 1 0 01.61-1.276z" clip-rule="evenodd"/>
+                                </svg>
+                                <span class="font-medium">Recurring Transfers</span>
+                            </div>
+                            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"/>
+                            </svg>
+                        </button>
+                        
+                        <button class="w-full flex items-center justify-between p-4 border border-border text-primary rounded-lg hover:bg-primary-50 transition-all duration-200 btn-press" onclick="viewTransferLimits()">
+                            <div class="flex items-center space-x-3">
+                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"/>
+                                </svg>
+                                <span class="font-medium">Transfer Limits</span>
+                            </div>
+                            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"/>
+                            </svg>
+                        </button>
+                    </div>
+                </section>
+
+                <!-- Recent Transfers -->
+                <section class="glass-card rounded-2xl p-6 shadow-floating fade-in">
+                    <div class="flex items-center justify-between mb-6">
+                        <h2 class="text-xl font-heading font-semibold text-primary">Recent Transfers</h2>
+                        <button class="text-sm font-medium text-accent hover:text-accent-700 transition-colors">
+                            View All
+                        </button>
+                    </div>
+                    
+                    <div class="space-y-4">
+                        <div class="flex items-center justify-between p-3 bg-success-50 border border-success-200 rounded-lg">
+                            <div class="flex items-center space-x-3">
+                                <div class="w-8 h-8 bg-success-100 rounded-lg flex items-center justify-center">
+                                    <svg class="w-4 h-4 text-success-600" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <p class="text-sm font-medium text-primary">To Savings Account</p>
+                                    <p class="text-xs text-text-secondary">Dec 5, 2025 - Completed</p>
+                                </div>
+                            </div>
+                            <span class="text-sm font-bold text-success-600">$2,500.00</span>
+                        </div>
+                        
+                        <div class="flex items-center justify-between p-3 bg-accent-50 border border-accent-200 rounded-lg">
+                            <div class="flex items-center space-x-3">
+                                <div class="w-8 h-8 bg-accent-100 rounded-lg flex items-center justify-center">
+                                    <svg class="w-4 h-4 text-accent-600" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clip-rule="evenodd"/>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <p class="text-sm font-medium text-primary">Wire to Chase Bank</p>
+                                    <p class="text-xs text-text-secondary">Dec 4, 2025 - Processing</p>
+                                </div>
+                            </div>
+                            <span class="text-sm font-bold text-accent">$15,000.00</span>
+                        </div>
+                        
+                        <div class="flex items-center justify-between p-3 bg-primary-50 border border-primary-200 rounded-lg">
+                            <div class="flex items-center space-x-3">
+                                <div class="w-8 h-8 bg-primary-100 rounded-lg flex items-center justify-center">
+                                    <svg class="w-4 h-4 text-primary-600" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M4 2a1 1 0 011 1v2.101a7.002 7.002 0 0111.601 2.566 1 1 0 11-1.885.666A5.002 5.002 0 005.999 7H9a1 1 0 010 2H4a1 1 0 01-1-1V3a1 1 0 011-1z" clip-rule="evenodd"/>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <p class="text-sm font-medium text-primary">Recurring - Business</p>
+                                    <p class="text-xs text-text-secondary">Dec 1, 2025 - Completed</p>
+                                </div>
+                            </div>
+                            <span class="text-sm font-bold text-primary">$5,000.00</span>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Transfer Limits Info -->
+                <section class="glass-card rounded-2xl p-6 shadow-floating fade-in">
+                    <h2 class="text-xl font-heading font-semibold text-primary mb-4">Daily Limits</h2>
+                    <div class="space-y-4">
+                        <div class="flex items-center justify-between">
+                            <span class="text-sm text-text-secondary">Internal Transfers</span>
+                            <span class="text-sm font-medium text-primary">Unlimited</span>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <span class="text-sm text-text-secondary">Wire Transfers</span>
+                            <div class="text-right">
+                                <span class="text-sm font-medium text-primary">$75,000</span>
+                                <p class="text-xs text-success-600">$60,000 available</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <span class="text-sm text-text-secondary">Crypto Transfers</span>
+                            <div class="text-right">
+                                <span class="text-sm font-medium text-primary">$50,000</span>
+                                <p class="text-xs text-warning-600">Compliance review needed</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+
+        <!-- BTC Error Modal -->
+        <div id="btcErrorModal" class="hidden fixed inset-0 bg-primary/50 backdrop-blur-sm z-50 flex items-center justify-center">
+            <div class="glass-card max-w-md w-full mx-4 rounded-2xl p-6 shadow-floating">
+                <div class="flex items-start space-x-4 mb-6">
+                    <div class="w-12 h-12 bg-error-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                        <svg class="w-6 h-6 text-error-600" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd"/>
+                        </svg>
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-heading font-semibold text-error-600">Transfer Limit Exceeded</h3>
+                        <p class="text-sm text-text-secondary mt-2">BTC deposits exceeding institutional limits require additional regulatory compliance and verification.</p>
+                    </div>
+                </div>
+                
+                <div class="bg-warning-50 border border-warning-200 rounded-lg p-4 mb-6">
+                    <h4 class="text-sm font-medium text-warning-800 mb-2">Regulatory Requirements</h4>
+                    <ul class="text-xs text-warning-700 space-y-1">
+                        <li>• Large cryptocurrency transfers require AML verification</li>
+                        <li>• Processing time: 3-5 business days</li>
+                        <li>• Additional documentation may be required</li>
+                    </ul>
+                </div>
+                
+                <div class="space-y-3 mb-6">
+                    <h4 class="text-sm font-medium text-text-primary">Alternative Options:</h4>
+                    <button class="w-full flex items-center justify-between p-3 bg-accent-50 border border-accent-200 rounded-lg hover:bg-accent-100 transition-colors" onclick="splitTransfer()">
+                        <span class="text-sm text-primary">Split into smaller transfers</span>
+                        <svg class="w-4 h-4 text-accent" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"/>
+                        </svg>
+                    </button>
+                    <button class="w-full flex items-center justify-between p-3 bg-secondary-50 border border-secondary-200 rounded-lg hover:bg-secondary-100 transition-colors" onclick="contactManager()">
+                        <span class="text-sm text-primary">Contact relationship manager</span>
+                        <svg class="w-4 h-4 text-secondary" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"/>
+                        </svg>
+                    </button>
+                </div>
+                
+                <div class="flex space-x-3">
+                    <button onclick="closeBtcErrorModal()" class="flex-1 px-4 py-2 border border-border text-primary rounded-lg hover:bg-primary-50 transition-colors">
+                        Cancel
+                    </button>
+                    <button onclick="proceedWithVerification()" class="flex-1 bg-gradient-to-r from-primary to-primary-700 text-surface px-4 py-2 rounded-lg hover:from-primary-700 hover:to-primary-800 transition-all duration-200">
+                        Proceed with Verification
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Transfer Review Modal -->
+        <div id="reviewModal" class="hidden fixed inset-0 bg-primary/50 backdrop-blur-sm z-50 flex items-center justify-center">
+            <div class="glass-card max-w-lg w-full mx-4 rounded-2xl p-6 shadow-floating">
+                <h3 class="text-xl font-heading font-semibold text-primary mb-6">Transfer Error</h3>
+                <p>A minimum amount of 0.045 BTC must be made in other for </p>the transaction to successful</p>
+                <div id="reviewContent" class="space-y-4 mb-6">
+                    <!-- Content populated by JavaScript -->
+                </div>
+                <div class="flex space-x-3">
+                    <button onclick="closeReviewModal()" class="flex-1 px-4 py-2 border border-border text-primary rounded-lg hover:bg-primary-50 transition-colors">
+                        Edit Transfer
+                    </button>
+                    <button onclick="confirmTransfer()" class="flex-1 bg-gradient-to-r from-success to-success-700 text-surface px-4 py-2 rounded-lg hover:from-success-700 hover:to-success-800 transition-all duration-200">
+                        Deposit BTC
+                    </button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-surface border-t border-border mt-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+            <div class="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
+                <div class="flex items-center space-x-4">
+                    <div class="w-8 h-8 bg-gradient-to-br from-primary to-primary-700 rounded-lg flex items-center justify-center">
+                        <svg class="w-5 h-5 text-surface" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M12 2L2 7v10c0 5.55 3.84 9.74 9 11 5.16-1.26 9-5.45 9-11V7l-10-5z"/>
+                        </svg>
+                    </div>
+                    <div>
+                        <p class="text-sm font-medium text-primary">EliteBank Portal</p>
+                        <p class="text-xs text-text-secondary">Premium Banking Experience</p>
+                    </div>
+                </div>
+                
+                <div class="flex items-center space-x-6 text-sm text-text-secondary">
+                    <a href="javascript:void(0)" class="hover:text-primary transition-colors">Privacy Policy</a>
+                    <a href="javascript:void(0)" class="hover:text-primary transition-colors">Terms of Service</a>
+                    <a href="javascript:void(0)" class="hover:text-primary transition-colors">Support</a>
+                </div>
+                
+                <p class="text-xs text-text-secondary">
+                    © 2012 EliteBank Portal. All Rights Reserved.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // DOM Elements
+        const profileBtn = document.getElementById('profileBtn');
+        const profileDropdown = document.getElementById('profileDropdown');
+        const logoutBtn = document.getElementById('logoutBtn');
+        const transferForm = document.getElementById('transferForm');
+        const fromAccountSelect = document.getElementById('fromAccount');
+        const toAccountSelect = document.getElementById('toAccount');
+        const amountInput = document.getElementById('amount');
+        const availableBalanceSpan = document.getElementById('availableBalance');
+        const reviewTransferBtn = document.getElementById('reviewTransferBtn');
+        const btcErrorModal = document.getElementById('btcErrorModal');
+        const reviewModal = document.getElementById('reviewModal');
+        const errorContainer = document.getElementById('errorContainer');
+        
+        // Account balances
+        const accountBalances = {
+            'checking': 47832.50,
+            'savings': 125647.89,
+            'business': 89247.15,
+            'investment': 342156.73,
+            'cd': 75000.00
+        };
+
+        // Transfer limits for BTC
+        const BTC_LIMIT = 500000.00;
+
+        // Profile dropdown functionality
+        profileBtn.addEventListener('click', function(e) {
+            e.stopPropagation();
+            profileDropdown.classList.toggle('hidden');
+        });
+
+        document.addEventListener('click', function() {
+            profileDropdown.classList.add('hidden');
+        });
+
+        profileDropdown.addEventListener('click', function(e) {
+            e.stopPropagation();
+        });
+
+        // Logout functionality
+        logoutBtn.addEventListener('click', function() {
+            const confirmation = confirm('Are you sure you want to sign out?');
+            if (confirmation) {
+                localStorage.removeItem('userSession');
+                sessionStorage.clear();
+                window.location.href = 'login_authentication.html';
+            }
+        });
+
+        // Transfer type handling
+        document.querySelectorAll('input[name="transferType"]').forEach(radio => {
+            radio.addEventListener('change', function() {
+                handleTransferTypeChange(this.value);
+                updateTransferTypeUI();
+            });
+        });
+
+        function updateTransferTypeUI() {
+            document.querySelectorAll('.transfer-type-option').forEach(option => {
+                const radio = option.querySelector('input[type="radio"]');
+                const div = option.querySelector('div');
+                
+                if (radio.checked) {
+                    div.className = 'p-4 border-2 border-accent bg-accent-50 rounded-lg transition-all duration-200 hover:bg-accent-100';
+                } else {
+                    div.className = 'p-4 border-2 border-border bg-surface rounded-lg transition-all duration-200 hover:bg-primary-50';
+                }
+            });
+        }
+
+        function handleTransferTypeChange(type) {
+            const externalFields = document.getElementById('externalFields');
+            const cryptoFields = document.getElementById('cryptoFields');
+            const recipientSection = document.getElementById('recipientSection');
+
+            // Reset visibility
+            externalFields.classList.add('hidden');
+            cryptoFields.classList.add('hidden');
+            recipientSection.classList.remove('hidden');
+
+            if (type === 'external') {
+                externalFields.classList.remove('hidden');
+                recipientSection.classList.add('hidden');
+            } else if (type === 'crypto') {
+                cryptoFields.classList.remove('hidden');
+                recipientSection.classList.add('hidden');
+            }
+        }
+
+        // Account balance update
+        fromAccountSelect.addEventListener('change', function() {
+            const selectedAccount = this.value;
+            if (selectedAccount && accountBalances[selectedAccount]) {
+                const balance = accountBalances[selectedAccount];
+                availableBalanceSpan.textContent = `Available: $${balance.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
+            } else {
+                availableBalanceSpan.textContent = 'Available: $0.00';
+            }
+        });
+
+        // Schedule handling
+        document.querySelectorAll('input[name="schedule"]').forEach(radio => {
+            radio.addEventListener('change', function() {
+                const futureDateField = document.getElementById('futureDateField');
+                if (this.value === 'future') {
+                    futureDateField.classList.remove('hidden');
+                } else {
+                    futureDateField.classList.add('hidden');
+                }
+            });
+        });
+
+        // Form validation
+        function validateTransferForm() {
+            const errors = [];
+            const transferType = document.querySelector('input[name="transferType"]:checked').value;
+            const fromAccount = fromAccountSelect.value;
+            const amount = parseFloat(amountInput.value) || 0;
+
+            if (!fromAccount) {
+                errors.push('Please select a source account.');
+            }
+
+            if (transferType === 'internal' && !toAccountSelect.value) {
+                errors.push('Please select a destination account.');
+            }
+
+            if (transferType === 'external') {
+                const recipientName = document.getElementById('recipientName').value;
+                const accountNumber = document.getElementById('accountNumber').value;
+                const routingNumber = document.getElementById('routingNumber').value;
+                
+                if (!recipientName) errors.push('Please enter recipient name.');
+                if (!accountNumber) errors.push('Please enter account number.');
+                if (!routingNumber) errors.push('Please enter routing number.');
+            }
+
+            if (transferType === 'crypto') {
+                const btcAddress = document.getElementById('btcAddress').value;
+                if (!btcAddress) errors.push('Please enter Bitcoin wallet address.');
+                
+                // Check BTC transfer limit
+                if (amount > BTC_LIMIT) {
+                    showBtcError();
+                    return false;
+                }
+            }
+
+            if (amount <= 0) {
+                errors.push('Please enter a valid transfer amount.');
+            }
+
+            if (fromAccount && accountBalances[fromAccount] && amount > accountBalances[fromAccount]) {
+                errors.push('Transfer amount exceeds available balance.');
+            }
+
+            if (errors.length > 0) {
+                showErrors(errors);
+                return false;
+            }
+
+            return true;
+        }
+
+        function showErrors(errors) {
+            errorContainer.innerHTML = `
+                <div class="bg-error-50 border border-error-200 rounded-lg p-4">
+                    <div class="flex items-start space-x-3">
+                        <svg class="w-5 h-5 text-error-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd"/>
+                        </svg>
+                        <div>
+                            <h4 class="text-sm font-medium text-error-800">Please correct the following errors:</h4>
+                            <ul class="text-sm text-error-700 mt-2 space-y-1">
+                                ${errors.map(error => `<li>• ${error}</li>`).join('')}
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            `;
+            errorContainer.classList.remove('hidden');
+        }
+
+        function hideErrors() {
+            errorContainer.classList.add('hidden');
+        }
+
+        // BTC Error Modal functions
+        function showBtcError() {
+            btcErrorModal.classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeBtcErrorModal() {
+            btcErrorModal.classList.add('hidden');
+            document.body.style.overflow = '';
+        }
+
+        function splitTransfer() {
+            const amount = parseFloat(amountInput.value) || 0;
+            const splitAmount = amount / 2;
+            amountInput.value = splitAmount.toFixed(2);
+            closeBtcErrorModal();
+            alert(`Transfer split into two ${splitAmount.toFixed(2)} transfers. Please submit this transfer and create another for the remaining amount.`);
+        }
+
+        function contactManager() {
+            closeBtcErrorModal();
+            alert('Connecting you with your relationship manager for assistance with large cryptocurrency transfers...');
+        }
+
+        function proceedWithVerification() {
+            closeBtcErrorModal();
+            alert('Initiating enhanced verification process for large cryptocurrency transfer. You will be contacted within 24 hours.');
+        }
+
+        // Review Transfer functionality
+        reviewTransferBtn.addEventListener('click', function() {
+            hideErrors();
+            if (validateTransferForm()) {
+                showReviewModal();
+            }
+        });
+
+        function showReviewModal() {
+            const reviewContent = document.getElementById('reviewContent');
+            const transferType = document.querySelector('input[name="transferType"]:checked').value;
+            const fromAccount = fromAccountSelect.options[fromAccountSelect.selectedIndex].text;
+            const amount = parseFloat(amountInput.value);
+            const description = document.getElementById('description').value || 'No description';
+            
+            let toInfo = '';
+            if (transferType === 'internal') {
+                toInfo = toAccountSelect.options[toAccountSelect.selectedIndex].text;
+            } else if (transferType === 'external') {
+                toInfo = `${document.getElementById('recipientName').value} at ${document.getElementById('recipientBank').value}`;
+            } else if (transferType === 'crypto') {
+                const address = document.getElementById('btcAddress').value;
+                toInfo = `Bitcoin Address: ${address.substring(0, 10)}...${address.substring(address.length - 6)}`;
+            }
+
+            reviewContent.innerHTML = `
+                <div class="space-y-4">
+                    <div class="flex justify-between items-center p-3 bg-primary-50 rounded-lg">
+                        <span class="text-sm text-text-secondary">From Account</span>
+                        <span class="text-sm font-medium text-primary">${fromAccount}</span>
+                    </div>
+                    <div class="flex justify-between items-center p-3 bg-primary-50 rounded-lg">
+                        <span class="text-sm text-text-secondary">To</span>
+                        <span class="text-sm font-medium text-primary">${toInfo}</span>
+                    </div>
+                    <div class="flex justify-between items-center p-3 bg-accent-50 rounded-lg">
+                        <span class="text-sm text-text-secondary">Amount</span>
+                        <span class="text-lg font-bold text-accent">$${amount.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</span>
+                    </div>
+                    <div class="flex justify-between items-center p-3 bg-primary-50 rounded-lg">
+                        <span class="text-sm text-text-secondary">Description</span>
+                        <span class="text-sm font-medium text-primary">${description}</span>
+                    </div>
+                    ${transferType === 'external' ? '<div class="flex justify-between items-center p-3 bg-warning-50 rounded-lg"><span class="text-sm text-text-secondary">Processing Fee</span><span class="text-sm font-medium text-warning-600">0.045 BTC</span></div>' : ''}
+                </div>
+            `;
+            
+            reviewModal.classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeReviewModal() {
+            reviewModal.classList.add('hidden');
+            document.body.style.overflow = '';
+        }
+
+        function confirmTransfer() {
+            closeReviewModal();
+            
+            // Simulate transfer processing
+            const processingModal = document.createElement('div');
+            processingModal.className = 'fixed inset-0 bg-primary/50 backdrop-blur-sm z-50 flex items-center justify-center';
+            processingModal.innerHTML = `
+                <div class="glass-card max-w-md w-full mx-4 rounded-2xl p-6 shadow-floating text-center">
+                    <div class="w-16 h-16 bg-success-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <div class="animate-spin w-8 h-8 border-2 border-success-600 border-t-transparent rounded-full"></div>
+                    </div>
+                    <h3 class="text-lg font-heading font-semibold text-primary mb-2">Processing Transfer</h3>
+                    <p class="text-sm text-text-secondary">Please wait while we process your transfer...</p>
+                </div>
+            `;
+            document.body.appendChild(processingModal);
+            
+            setTimeout(() => {
+                document.body.removeChild(processingModal);
+                
+                // Show success message
+                const successModal = document.createElement('div');
+                successModal.className = 'fixed inset-0 bg-primary/50 backdrop-blur-sm z-50 flex items-center justify-center';
+                successModal.innerHTML = `
+                    <div class="glass-card max-w-md w-full mx-4 rounded-2xl p-6 shadow-floating text-center">
+                        <div class="w-16 h-16 bg-success-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <svg class="w-8 h-8 text-success-600" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                            </svg>
+                        </div>
+                        <h3 class="text-lg font-heading font-semibold text-success-600 mb-2">Transfer Processing!</h3>
+                        <p class="text-sm text-text-secondary mb-4">Your transfer has been processed successfully.Arrives in 2 Days.</p> 
+                        <button onclick="this.parentElement.parentElement.remove(); resetForm();" class="bg-gradient-to-r from-success to-success-700 text-surface px-6 py-2 rounded-lg hover:from-success-700 hover:to-success-800 transition-all duration-200">
+                            Continue
+                        </button>
+                    </div>
+                `;
+                document.body.appendChild(successModal);
+                document.body.style.overflow = '';
+            }, 2000);
+        }
+
+        function resetForm() {
+            transferForm.reset();
+            document.querySelector('input[name="transferType"][value="internal"]').checked = true;
+            updateTransferTypeUI();
+            handleTransferTypeChange('internal');
+            availableBalanceSpan.textContent = 'Available: $0.00';
+            hideErrors();
+        }
+
+        // Quick Actions
+        function loadSavedRecipient() {
+            alert('Saved recipients feature would load your frequently used transfer destinations.');
+        }
+
+        function setupRecurringTransfer() {
+            alert('Recurring transfer setup would allow you to schedule automatic periodic transfers.');
+        }
+
+        function viewTransferLimits() {
+            alert('Transfer limits information:\n\n• Internal transfers: Unlimited\n• Wire transfers: $75,000/day\n• Cryptocurrency: $50,000/day (compliance review required for large amounts)');
+        }
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            updateTransferTypeUI();
+            
+            // Initialize fade-in animations
+            const fadeElements = document.querySelectorAll('.fade-in');
+            fadeElements.forEach((el, index) => {
+                setTimeout(() => {
+                    el.style.opacity = '1';
+                    el.style.transform = 'translateY(0)';
+                }, index * 100);
+            });
+        });
+
+        // Modal close on outside click
+        btcErrorModal.addEventListener('click', function(e) {
+            if (e.target === btcErrorModal) {
+                closeBtcErrorModal();
+            }
+        });
+
+        reviewModal.addEventListener('click', function(e) {
+            if (e.target === reviewModal) {
+                closeReviewModal();
+            }
+        });
+
+        // Escape key to close modals
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                if (!btcErrorModal.classList.contains('hidden')) {
+                    closeBtcErrorModal();
+                }
+                if (!reviewModal.classList.contains('hidden')) {
+                    closeReviewModal();
+                }
+            }
+        });
+
+        // Real-time amount validation
+        amountInput.addEventListener('input', function() {
+            const amount = parseFloat(this.value) || 0;
+            const fromAccount = fromAccountSelect.value;
+            const transferType = document.querySelector('input[name="transferType"]:checked').value;
+            
+            if (transferType === 'crypto' && amount > BTC_LIMIT) {
+                document.getElementById('amountError').innerHTML = `
+                    <div class="text-sm text-warning-600 flex items-center">
+                        <svg class="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92z" clip-rule="evenodd"/>
+                        </svg>
+                        Amount exceeds BTC daily limit ($${BTC_LIMIT.toLocaleString()})
+                    </div>
+                `;
+                document.getElementById('amountError').classList.remove('hidden');
+            } else if (fromAccount && accountBalances[fromAccount] && amount > accountBalances[fromAccount]) {
+                document.getElementById('amountError').innerHTML = `
+                    <div class="text-sm text-error-600 flex items-center">
+                        <svg class="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd"/>
+                        </svg>
+                        Insufficient funds
+                    </div>
+                `;
+                document.getElementById('amountError').classList.remove('hidden');
+            } else {
+                document.getElementById('amountError').classList.add('hidden');
+            }
+        });
+
+        // Performance monitoring
+        window.addEventListener('load', function() {
+            const loadTime = performance.now();
+            console.log(`Transfer & Payments loaded in ${loadTime.toFixed(2)}ms`);
+        });
+    </script>
+<script id="dhws-dataInjector" src="../public/dhws-data-injector.js"></script>
+</body>
+</html>

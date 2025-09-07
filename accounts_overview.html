@@ -1,0 +1,802 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Accounts Overview - EliteBank Portal</title>
+    <link rel="stylesheet" href="../css/main.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<script type="module" src="https://static.rocket.new/rocket-web.js?_cfg=https%3A%2F%2Felitebank9583back.builtwithrocket.new&_be=https%3A%2F%2Fapplication.rocket.new&_v=0.1.8"></script>
+</head>
+<body class="min-h-screen bg-gradient-to-br from-primary-50 via-background to-accent-50 font-body">
+    <!-- Dashboard Header -->
+    <header class="w-full bg-surface/90 backdrop-blur-md border-b border-border shadow-layered sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <!-- Logo & Welcome -->
+                 <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 bg-gradient-to-br from-primary-600 to-primary-800 rounded-lg flex items-center justify-center">
+                        <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M12 2L2 7v10c0 5.55 3.84 9.74 9 11 5.16-1.26 9-5.45 9-11V7l-10-5z"/>
+                            <path d="M9 12l2 2 4-4" stroke="currentColor" stroke-width="2" fill="none"/>
+                        </svg>
+                    </div>
+                    <div>
+                        <h1 class="text-xl font-bold text-primary-800">Elite Banking</h1>
+                        <p class="text-xs text-secondary-500">Secure Banking Portal</p>
+                    </div>
+                </div>
+
+                <!-- Navigation & User Profile -->
+                <div class="flex items-center space-x-6">
+                    <!-- Quick Navigation -->
+                    <nav class="hidden md:flex items-center space-x-4">
+                        <a href="personal_dashboard.html" class="px-3 py-2 text-sm font-medium text-text-secondary hover:text-primary transition-colors">
+                            Dashboard
+                        </a>
+                        <a href="accounts_overview.html" class="px-3 py-2 text-sm font-medium text-primary bg-primary-50 rounded-lg">
+                            Accounts
+                        </a>
+                        <a href="C:\Users\Shedrach\Videos\elitebank_portal\Files\pages\transfer_payment.html" class="px-3 py-2 text-sm font-medium text-text-secondary hover:text-primary transition-colors">
+                            Transfers
+                        </a>
+                        <a href="investment_portfolio.html" class="px-3 py-2 text-sm font-medium text-text-secondary hover:text-primary transition-colors">
+                            Investments
+                        </a>
+                    </nav>
+
+                    <!-- Notifications -->
+                    <div class="relative">
+                        <button id="notificationBtn" class="relative p-2 text-text-secondary hover:text-primary transition-colors" onclick="window.location.href='notifications_center.html'">
+                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
+                                <path d="M10 2a6 6 0 00-6 6v3.586l-.707.707A1 1 0 004 14h12a1 1 0 00.707-1.707L16 11.586V8a6 6 0 00-6-6zM10 18a3 3 0 01-3-3h6a3 3 0 01-3 3z"/>
+                            </svg>
+                            <span class="absolute -top-1 -right-1 h-4 w-4 bg-error-500 text-surface text-xs rounded-full flex items-center justify-center">3</span>
+                        </button>
+                    </div>
+
+                    <!-- User Profile -->
+                    <div class="flex items-center space-x-3">
+                        <div class="hidden sm:block text-right">
+                            <p class="text-sm font-medium text-primary">John Sterling</p>
+                            <p class="text-xs text-text-secondary">Premium Member</p>
+                        </div>
+                        <div class="relative">
+                            <button id="profileBtn" class="w-10 h-10 rounded-full overflow-hidden border-2 border-secondary-200 hover:border-secondary-400 transition-colors">
+                                <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Profile" class="w-full h-full object-cover" onerror="this.src='https://images.unsplash.com/photo-1584824486509-112e4181ff6b?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'; this.onerror=null;" />
+                            </button>
+                            <!-- Profile Dropdown -->
+                            <div id="profileDropdown" class="hidden absolute right-0 mt-2 w-48 bg-surface rounded-lg shadow-floating border border-border z-50">
+                                <div class="py-2">
+                                    <a href="javascript:void(0)" class="block px-4 py-2 text-sm text-text-primary hover:bg-primary-50 transition-colors">
+                                        Account Settings
+                                    </a>
+                                    <a href="javascript:void(0)" class="block px-4 py-2 text-sm text-text-primary hover:bg-primary-50 transition-colors">
+                                        Security
+                                    </a>
+                                    <a href="javascript:void(0)" class="block px-4 py-2 text-sm text-text-primary hover:bg-primary-50 transition-colors">
+                                        Support
+                                    </a>
+                                    <hr class="my-2 border-border" />
+                                    <button id="logoutBtn" class="block w-full text-left px-4 py-2 text-sm text-error-600 hover:bg-error-50 transition-colors">
+                                        Sign Out
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Accounts Overview Content -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <!-- Page Header -->
+        <div class="mb-8">
+            <h1 class="text-3xl font-heading font-bold text-primary mb-2">Accounts Overview</h1>
+            <p class="text-text-secondary">Comprehensive management of your high-net-worth banking portfolio</p>
+        </div>
+
+        <!-- Account Summary Cards -->
+        <section class="mb-8">
+            <div class="flex items-center justify-between mb-6">
+                <h2 class="text-xl font-heading font-semibold text-primary">Account Summary</h2>
+                <div class="flex items-center space-x-2">
+                    <button id="sortTypeBtn" class="px-3 py-1 text-sm font-medium text-text-secondary hover:text-primary border border-border rounded-lg transition-colors">
+                        Sort by Type
+                    </button>
+                    <button id="sortBalanceBtn" class="px-3 py-1 text-sm font-medium text-text-secondary hover:text-primary border border-border rounded-lg transition-colors">
+                        Sort by Balance
+                    </button>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="accountsGrid">
+                <!-- Primary Checking Account -->
+                <div class="glass-card rounded-2xl p-6 shadow-floating fade-in account-card" data-type="checking" data-balance="47832.50">
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="w-12 h-12 bg-gradient-to-br from-primary to-primary-700 rounded-lg flex items-center justify-center">
+                            <svg class="w-6 h-6 text-surface" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M3 6h18v2H3V6zm0 5h18v2H3v-2zm0 5h18v2H3v-2z"/>
+                            </svg>
+                        </div>
+                        <div class="flex flex-col items-end">
+                            <span class="text-xs font-medium text-success-600 bg-success-50 px-2 py-1 rounded-full">Active</span>
+                            <span class="text-xs text-text-secondary mt-1">****2847</span>
+                        </div>
+                    </div>
+                    <h3 class="text-sm font-medium text-text-secondary mb-1">Primary Checking</h3>
+                    <p class="text-3xl font-bold text-text-primary data-mono">$129,847,567.50</p>
+                    <div class="flex items-center justify-between text-xs">
+                        <span class="text-success-600 flex items-center">
+                            <svg class="w-3 h-3 mr-1" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M5.293 9.707a1 1 0 010-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 01-1.414 1.414L11 7.414V15a1 1 0 11-2 0V7.414L6.707 9.707a1 1 0 01-1.414 0z" clip-rule="evenodd"/>
+                            </svg>
+                            +200.3% this month
+                     
+                    </div>
+                </div>
+
+                <!-- High-Yield Savings Account -->
+                <div class="glass-card rounded-2xl p-6 shadow-floating fade-in account-card" data-type="savings" data-balance="125647.89">
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="w-12 h-12 bg-gradient-to-br from-secondary to-secondary-700 rounded-lg flex items-center justify-center">
+                            <svg class="w-6 h-6 text-surface" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                            </svg>
+                        </div>
+                        <div class="flex flex-col items-end">
+                            <span class="text-xs font-medium text-accent-600 bg-accent-50 px-2 py-1 rounded-full">2.5% APY</span>
+                            <span class="text-xs text-text-secondary mt-1">****7239</span>
+                        </div>
+                    </div>
+                    <h3 class="text-sm font-medium text-text-secondary mb-1">High-Yield Savings</h3>
+                    <p class="text-3xl font-bold text-text-primary data-mono">$125,647.89</p>
+                    <div class="flex items-center justify-between text-xs">
+                        <span class="text-success-600 flex items-center">
+                            <svg class="w-3 h-3 mr-1" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M5.293 9.707a1 1 0 010-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 01-1.414 1.414L11 7.414V15a1 1 0 11-2 0V7.414L6.707 9.707a1 1 0 01-1.414 0z" clip-rule="evenodd"/>
+                            </svg>
+                            +$312.45 interest
+                        </span>
+                        <button class="text-accent hover:text-accent-700 transition-colors" onclick="viewAccountDetails('savings', 'High-Yield Savings')">
+                            View Details
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Investment Portfolio Account -->
+                <div class="glass-card rounded-2xl p-6 shadow-floating fade-in account-card" data-type="investment" data-balance="342156.73">
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="w-12 h-12 bg-gradient-to-br from-accent to-accent-700 rounded-lg flex items-center justify-center">
+                            <svg class="w-6 h-6 text-surface" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M16 6l2.29 2.29-4.88 4.88-4-4L2 16.59 3.41 18l6-6 4 4 6.3-6.29L22 12V6z"/>
+                            </svg>
+                        </div>
+                        <div class="flex flex-col items-end">
+                            <span class="text-xs font-medium text-success-600 bg-success-50 px-2 py-1 rounded-full">+8.2%</span>
+                            <span class="text-xs text-text-secondary mt-1">****9851</span>
+                        </div>
+                    </div>
+                    <h3 class="text-sm font-medium text-text-secondary mb-1">Investment Portfolio</h3>
+                    <p class="text-3xl font-bold text-text-primary data-mono">$342,156.73</p>
+                    <div class="flex items-center justify-between text-xs">
+                        <span class="text-success-600 flex items-center">
+                            <svg class="w-3 h-3 mr-1" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M5.293 9.707a1 1 0 010-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 01-1.414 1.414L11 7.414V15a1 1 0 11-2 0V7.414L6.707 9.707a1 1 0 01-1.414 0z" clip-rule="evenodd"/>
+                            </svg>
+                            +$25,847 YTD
+                        </span>
+                        <button class="text-accent hover:text-accent-700 transition-colors" onclick="viewAccountDetails('investment', 'Investment Portfolio')">
+                            View Details
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Elite Rewards Credit Card -->
+                <div class="glass-card rounded-2xl p-6 shadow-floating fade-in account-card" data-type="credit" data-balance="3247.82">
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="w-12 h-12 bg-gradient-to-br from-warning to-warning-700 rounded-lg flex items-center justify-center">
+                            <svg class="w-6 h-6 text-surface" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M20 4H4c-1.11 0-1.99.89-1.99 2L2 18c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V6c0-1.11-.89-2-2-2zm0 14H4v-6h16v6zm0-10H4V6h16v2z"/>
+                            </svg>
+                        </div>
+                        <div class="flex flex-col items-end">
+                            <span class="text-xs font-medium text-warning-600 bg-warning-50 px-2 py-1 rounded-full">Due 12/15</span>
+                            <span class="text-xs text-text-secondary mt-1">****4521</span>
+                        </div>
+                    </div>
+                    <h3 class="text-sm font-medium text-text-secondary mb-1">Elite Rewards Card</h3>
+                    <p class="text-3xl font-bold text-text-primary data-mono">$3,247.82</p>
+                    <div class="flex items-center justify-between text-xs">
+                        <span class="text-text-secondary">Available: $129,847,567.50</span>
+                        <button class="text-accent hover:text-accent-700 transition-colors" onclick="viewAccountDetails('credit', 'Elite Rewards Card')">
+                            View Details
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Business Checking Account -->
+                <div class="glass-card rounded-2xl p-6 shadow-floating fade-in account-card" data-type="business" data-balance="89247.15">
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="w-12 h-12 bg-gradient-to-br from-success to-success-700 rounded-lg flex items-center justify-center">
+                            <svg class="w-6 h-6 text-surface" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M10.394 2.08a1 1 0 00-.788 0l-7 3a1 1 0 000 1.84L5.25 8.051a.999.999 0 01.356-.257l4-1.714a1 1 0 11.788 1.838L7.667 9.088l1.94.831a1 1 0 00.787 0l7-3a1 1 0 000-1.838l-7-3z"/>
+                            </svg>
+                        </div>
+                        <div class="flex flex-col items-end">
+                            <span class="text-xs font-medium text-success-600 bg-success-50 px-2 py-1 rounded-full">Active</span>
+                            <span class="text-xs text-text-secondary mt-1">****8392</span>
+                        </div>
+                    </div>
+                    <h3 class="text-sm font-medium text-text-secondary mb-1">Business Checking</h3>
+                    <p class="text-3xl font-bold text-text-primary data-mono">$89,247.15</p>
+                    <div class="flex items-center justify-between text-xs">
+                        <span class="text-success-600 flex items-center">
+                            <svg class="w-3 h-3 mr-1" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M5.293 9.707a1 1 0 010-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 01-1.414 1.414L11 7.414V15a1 1 0 11-2 0V7.414L6.707 9.707a1 1 0 01-1.414 0z" clip-rule="evenodd"/>
+                            </svg>
+                            +1.8% this month
+                        </span>
+                        <button class="text-accent hover:text-accent-700 transition-colors" onclick="viewAccountDetails('business', 'Business Checking')">
+                            View Details
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Certificate of Deposit -->
+                <div class="glass-card rounded-2xl p-6 shadow-floating fade-in account-card" data-type="cd" data-balance="75000.00">
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="w-12 h-12 bg-gradient-to-br from-primary-600 to-primary-800 rounded-lg flex items-center justify-center">
+                            <svg class="w-6 h-6 text-surface" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                            </svg>
+                        </div>
+                        <div class="flex flex-col items-end">
+                            <span class="text-xs font-medium text-primary-600 bg-primary-50 px-2 py-1 rounded-full">3.2% APY</span>
+                            <span class="text-xs text-text-secondary mt-1">Matures 2026</span>
+                        </div>
+                    </div>
+                    <h3 class="text-sm font-medium text-text-secondary mb-1">12-Month CD</h3>
+                    <p class="text-3xl font-bold text-text-primary data-mono">$75,000.00</p>
+                    <div class="flex items-center justify-between text-xs">
+                        <span class="text-success-600 flex items-center">
+                            <svg class="w-3 h-3 mr-1" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M5.293 9.707a1 1 0 010-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 01-1.414 1.414L11 7.414V15a1 1 0 11-2 0V7.414L6.707 9.707a1 1 0 01-1.414 0z" clip-rule="evenodd"/>
+                            </svg>
+                            +$2,400 projected
+                        </span>
+                        <button class="text-accent hover:text-accent-700 transition-colors" onclick="viewAccountDetails('cd', '12-Month CD')">
+                            View Details
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Portfolio Allocation Chart -->
+        <section class="mb-8">
+            <div class="glass-card rounded-2xl p-6 shadow-floating fade-in">
+                <div class="flex items-center justify-between mb-6">
+                    <h2 class="text-xl font-heading font-semibold text-primary">Portfolio Allocation</h2>
+                    <div class="flex items-center space-x-2">
+                        <span class="text-sm text-text-secondary">Total Assets:</span>
+                        <span class="text-3xl font-bold text-text-primary data-mono">$683,131.29</span>
+                    </div>
+                </div>
+                
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                    <!-- Chart Area -->
+                    <div class="relative">
+                        <div class="w-64 h-64 mx-auto relative">
+                            <!-- Pie Chart SVG -->
+                            <svg class="w-full h-full transform -rotate-90" viewBox="0 0 100 100">
+                                <circle cx="50" cy="50" r="45" fill="none" stroke="#E5EFFD" stroke-width="10"/>
+                                <!-- Investment Portfolio - 50.1% -->
+                                <circle cx="50" cy="50" r="45" fill="none" stroke="#4A90E2" stroke-width="10" stroke-dasharray="157 157" stroke-dashoffset="0" opacity="0.9"/>
+                                <!-- Checking + Savings - 25.4% -->
+                                <circle cx="50" cy="50" r="45" fill="none" stroke="#D4AF37" stroke-width="10" stroke-dasharray="79.5 236" stroke-dashoffset="-157" opacity="0.8"/>
+                                <!-- Business - 13.1% -->
+                                <circle cx="50" cy="50" r="45" fill="none" stroke="#10B981" stroke-width="10" stroke-dasharray="41.1 273.9" stroke-dashoffset="-236.5" opacity="0.7"/>
+                                <!-- CD - 11.0% -->
+                                <circle cx="50" cy="50" r="45" fill="none" stroke="#1B2951" stroke-width="10" stroke-dasharray="34.5 280.5" stroke-dashoffset="-277.6" opacity="0.6"/>
+                                <!-- Credit - 0.4% -->
+                                <circle cx="50" cy="50" r="45" fill="none" stroke="#F59E0B" stroke-width="10" stroke-dasharray="1.3 313.7" stroke-dashoffset="-312.1" opacity="0.5"/>
+                            </svg>
+                            <div class="absolute inset-0 flex items-center justify-center">
+                                <div class="text-center">
+                                    <p class="text-3xl font-bold text-text-primary data-mono">$683K</p>
+                                    <p class="text-xs text-text-secondary">Total Assets</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Legend -->
+                    <div class="space-y-4">
+                        <div class="flex items-center justify-between p-3 bg-accent-50 rounded-lg">
+                            <div class="flex items-center space-x-3">
+                                <div class="w-4 h-4 bg-accent rounded-full"></div>
+                                <span class="text-sm font-medium text-primary">Investment Portfolio</span>
+                            </div>
+                            <div class="text-right">
+                                <p class="text-sm font-bold text-primary">$342,156.73</p>
+                                <p class="text-xs text-text-secondary">50.1%</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-center justify-between p-3 bg-secondary-50 rounded-lg">
+                            <div class="flex items-center space-x-3">
+                                <div class="w-4 h-4 bg-secondary rounded-full"></div>
+                                <span class="text-sm font-medium text-primary">Checking & Savings</span>
+                            </div>
+                            <div class="text-right">
+                                <p class="text-sm font-bold text-primary">$173,480.39</p>
+                                <p class="text-xs text-text-secondary">25.4%</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-center justify-between p-3 bg-success-50 rounded-lg">
+                            <div class="flex items-center space-x-3">
+                                <div class="w-4 h-4 bg-success rounded-full"></div>
+                                <span class="text-sm font-medium text-primary">Business Accounts</span>
+                            </div>
+                            <div class="text-right">
+                                <p class="text-sm font-bold text-primary">$89,247.15</p>
+                                <p class="text-xs text-text-secondary">13.1%</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-center justify-between p-3 bg-primary-50 rounded-lg">
+                            <div class="flex items-center space-x-3">
+                                <div class="w-4 h-4 bg-primary rounded-full"></div>
+                                <span class="text-sm font-medium text-primary">Certificate of Deposit</span>
+                            </div>
+                            <div class="text-right">
+                                <p class="text-sm font-bold text-primary">$75,000.00</p>
+                                <p class="text-xs text-text-secondary">11.0%</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-center justify-between p-3 bg-warning-50 rounded-lg">
+                            <div class="flex items-center space-x-3">
+                                <div class="w-4 h-4 bg-warning rounded-full"></div>
+                                <span class="text-sm font-medium text-primary">Credit Balance</span>
+                            </div>
+                            <div class="text-right">
+                                <p class="text-sm font-bold text-primary">$3,247.82</p>
+                                <p class="text-xs text-text-secondary">0.4%</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Quick Actions & Account Performance -->
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            <!-- Quick Actions -->
+            <div class="lg:col-span-1">
+                <section class="glass-card rounded-2xl p-6 shadow-floating fade-in">
+                    <h2 class="text-xl font-heading font-semibold text-primary mb-6">Quick Actions</h2>
+                    <div class="space-y-4">
+                        <button class="w-full flex items-center justify-between p-4 bg-gradient-to-r from-secondary to-secondary-700 text-surface rounded-lg hover:from-secondary-700 hover:to-secondary-800 transition-all duration-200 btn-press" onclick="window.location.href='transfer_payments.html'">
+                            <div class="flex items-center space-x-3">
+                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                                    <path d="M3 4a1 1 0 011-1h12a1 1 0 011 1v2a1 1 0 01-1 1H4a1 1 0 01-1-1V4zM3 10a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H4a1 1 0 01-1-1v-6zM14 9a1 1 0 00-1 1v6a1 1 0 001 1h2a1 1 0 001-1v-6a1 1 0 00-1-1h-2z"/>
+                                </svg>
+                                <span class="font-medium">Transfer To External Accounts</span>
+                            </div>
+                            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"/>
+                            </svg>
+
+                        <button class="w-full flex items-center justify-between p-4 bg-gradient-to-r from-accent to-accent-700 text-surface rounded-lg hover:from-accent-700 hover:to-accent-800 transition-all duration-200 btn-press" onclick="downloadStatements()">
+                            <div class="flex items-center space-x-3">
+                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z" clip-rule="evenodd"/>
+                                </svg>
+                                <span class="font-medium">Download Statements</span>
+                            </div>
+                            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"/>
+                            </svg>
+                        </button>
+                        
+                        <button class="w-full flex items-center justify-between p-4 bg-gradient-to-r from-primary to-primary-700 text-surface rounded-lg hover:from-primary-700 hover:to-primary-800 transition-all duration-200 btn-press" onclick="openNewAccount()">
+                            <div class="flex items-center space-x-3">
+                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z" clip-rule="evenodd"/>
+                                </svg>
+                                <span class="font-medium">Open New Account</span>
+                            </div>
+                            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"/>
+                            </svg>
+                        </button>
+                        
+                        <button class="w-full flex items-center justify-between p-4 border border-border text-primary rounded-lg hover:bg-primary-50 transition-all duration-200 btn-press" onclick="contactManager()">
+                            <div class="flex items-center space-x-3">
+                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"/>
+                                </svg>
+                                <span class="font-medium">Contact Relationship Manager</span>
+                            </div>
+                            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"/>
+                            </svg>
+                        </button>
+                    </div>
+                </section>
+            </div>
+
+            <!-- Account Performance Metrics -->
+            <div class="lg:col-span-2">
+                <section class="glass-card rounded-2xl p-6 shadow-floating fade-in">
+                    <div class="flex items-center justify-between mb-6">
+                        <h2 class="text-xl font-heading font-semibold text-primary">Account Performance</h2>
+                        <div class="flex items-center space-x-2">
+                            <button class="px-3 py-1 text-xs font-medium bg-primary text-surface rounded-lg">1M</button>
+                            <button class="px-3 py-1 text-xs font-medium text-text-secondary hover:text-primary transition-colors">3M</button>
+                            <button class="px-3 py-1 text-xs font-medium text-text-secondary hover:text-primary transition-colors">6M</button>
+                            <button class="px-3 py-1 text-xs font-medium text-text-secondary hover:text-primary transition-colors">1Y</button>
+                        </div>
+                    </div>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
+                        <div class="text-center p-4 bg-success-50 rounded-lg">
+                            <p class="text-md font-bold text-text-primary data-mono">+$38,247</p>
+                            <p class="text-sm text-text-secondary">Monthly Growth</p>
+                            <p class="text-xs text-success-600 mt-1">+5.9%</p>
+                        </div>
+                        <div class="text-center p-4 bg-accent-50 rounded-lg">
+                            <p class="text-md font-bold text-text-primary data-mono">2.8%</p>
+                            <p class="text-sm text-text-secondary">Avg Interest Rate</p>
+                            <p class="text-xs text-accent mt-1">Above market</p>
+                        </div>
+                        <div class="text-center p-4 bg-secondary-50 rounded-lg">
+                            <p class="text-md font-bold text-text-primary data-mono">$127</p>
+                            <p class="text-sm text-text-secondary">Monthly Fees</p>
+                            <p class="text-xs text-secondary mt-1">Premium tier</p>
+                        </div>
+                    </div>
+
+                    <!-- Performance Chart Placeholder -->
+                    <div class="h-48 bg-gradient-to-br from-primary-50 to-accent-50 rounded-lg flex items-center justify-center relative overflow-hidden">
+                        <svg class="w-full h-full absolute inset-0" viewBox="0 0 400 150" preserveAspectRatio="none">
+                            <defs>
+                                <linearGradient id="performanceGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+                                    <stop offset="0%" style="stop-color:#10B981;stop-opacity:0.3"/>
+                                    <stop offset="100%" style="stop-color:#10B981;stop-opacity:0"/>
+                                </linearGradient>
+                            </defs>
+                            <!-- Multiple account performance lines -->
+                            <path d="M0,120 Q50,110 100,115 T200,95 T300,85 T400,75" stroke="#10B981" stroke-width="2" fill="none"/>
+                            <path d="M0,100 Q50,95 100,98 T200,88 T300,80 T400,70" stroke="#4A90E2" stroke-width="2" fill="none"/>
+                            <path d="M0,90 Q50,88 100,92 T200,85 T300,78 T400,68" stroke="#D4AF37" stroke-width="2" fill="none"/>
+                            <path d="M0,120 Q50,110 100,115 T200,95 T300,85 T400,75 L400,150 L0,150 Z" fill="url(#performanceGradient)"/>
+                            <!-- Data points -->
+                            <circle cx="100" cy="115" r="3" fill="#10B981"/>
+                            <circle cx="200" cy="95" r="3" fill="#10B981"/>
+                            <circle cx="300" cy="85" r="3" fill="#10B981"/>
+                            <circle cx="400" cy="75" r="3" fill="#10B981"/>
+                        </svg>
+                        <div class="absolute bottom-4 right-4 bg-surface/90 backdrop-blur-sm rounded-lg p-3">
+                            <p class="text-sm font-medium text-success-600">+8.2% Portfolio Growth</p>
+                            <p class="text-xs text-text-secondary">vs 5.1% market average</p>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </main>
+
+    <!-- Account Details Modal -->
+    <div id="accountModal" class="hidden fixed inset-0 bg-primary/50 backdrop-blur-sm z-50 flex items-center justify-center">
+        <div class="glass-card max-w-2xl w-full mx-4 rounded-2xl p-6 shadow-floating">
+            <div class="flex items-center justify-between mb-6">
+                <h3 id="modalTitle" class="text-xl font-heading font-semibold text-primary">Account Details</h3>
+                <button onclick="closeModal()" class="text-text-secondary hover:text-primary transition-colors">
+                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"/>
+                    </svg>
+                </button>
+            </div>
+            
+            <div id="modalContent" class="space-y-6">
+                <!-- Content will be populated by JavaScript -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-surface border-t border-border mt-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+            <div class="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
+                <div class="flex items-center space-x-4">
+                    <div class="w-8 h-8 bg-gradient-to-br from-primary to-primary-700 rounded-lg flex items-center justify-center">
+                        <svg class="w-5 h-5 text-surface" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M12 2L2 7v10c0 5.55 3.84 9.74 9 11 5.16-1.26 9-5.45 9-11V7l-10-5z"/>
+                        </svg>
+                    </div>
+                    <div>
+                        <p class="text-sm font-medium text-primary">EliteBank Portal</p>
+                        <p class="text-xs text-text-secondary">Premium Banking Experience</p>
+                    </div>
+                </div>
+                
+                <div class="flex items-center space-x-6 text-sm text-text-secondary">
+                    <a href="javascript:void(0)" class="hover:text-primary transition-colors">Privacy Policy</a>
+                    <a href="javascript:void(0)" class="hover:text-primary transition-colors">Terms of Service</a>
+                    <a href="javascript:void(0)" class="hover:text-primary transition-colors">Support</a>
+                </div>
+                
+                <p class="text-xs text-text-secondary">
+                    © 2012 EliteBank Portal. All Rights Reserved.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // DOM Elements
+        const profileBtn = document.getElementById('profileBtn');
+        const profileDropdown = document.getElementById('profileDropdown');
+        const notificationBtn = document.getElementById('notificationBtn');
+        const logoutBtn = document.getElementById('logoutBtn');
+        const sortTypeBtn = document.getElementById('sortTypeBtn');
+        const sortBalanceBtn = document.getElementById('sortBalanceBtn');
+        const accountsGrid = document.getElementById('accountsGrid');
+        const accountModal = document.getElementById('accountModal');
+
+        // Profile dropdown functionality
+        profileBtn.addEventListener('click', function(e) {
+            e.stopPropagation();
+            profileDropdown.classList.toggle('hidden');
+        });
+
+        document.addEventListener('click', function() {
+            profileDropdown.classList.add('hidden');
+        });
+
+        profileDropdown.addEventListener('click', function(e) {
+            e.stopPropagation();
+        });
+
+        // Logout functionality
+        logoutBtn.addEventListener('click', function() {
+            const confirmation = confirm('Are you sure you want to sign out?');
+            if (confirmation) {
+                localStorage.removeItem('userSession');
+                sessionStorage.clear();
+                window.location.href = 'login_authentication.html';
+            }
+        });
+
+        // Sorting functionality
+        sortTypeBtn.addEventListener('click', function() {
+            sortAccounts('type');
+            updateSortButtons('type');
+        });
+
+        sortBalanceBtn.addEventListener('click', function() {
+            sortAccounts('balance');
+            updateSortButtons('balance');
+        });
+
+        function updateSortButtons(activeSort) {
+            document.querySelectorAll('#sortTypeBtn, #sortBalanceBtn').forEach(btn => {
+                btn.classList.remove('bg-primary', 'text-surface');
+                btn.classList.add('text-text-secondary');
+            });
+            
+            if (activeSort === 'type') {
+                sortTypeBtn.classList.add('bg-primary', 'text-surface');
+                sortTypeBtn.classList.remove('text-text-secondary');
+            } else if (activeSort === 'balance') {
+                sortBalanceBtn.classList.add('bg-primary', 'text-surface');
+                sortBalanceBtn.classList.remove('text-text-secondary');
+            }
+        }
+
+        function sortAccounts(criteria) {
+            const accountCards = Array.from(accountsGrid.children);
+            
+            accountCards.sort((a, b) => {
+                if (criteria === 'type') {
+                    const typeOrder = { 'checking': 1, 'savings': 2, 'investment': 3, 'business': 4, 'cd': 5, 'credit': 6 };
+                    const aType = a.getAttribute('data-type');
+                    const bType = b.getAttribute('data-type');
+                    return typeOrder[aType] - typeOrder[bType];
+                } else if (criteria === 'balance') {
+                    const aBalance = parseFloat(a.getAttribute('data-balance'));
+                    const bBalance = parseFloat(b.getAttribute('data-balance'));
+                    return bBalance - aBalance;
+                }
+                return 0;
+            });
+
+            // Re-append sorted elements
+            accountCards.forEach(card => accountsGrid.appendChild(card));
+            
+            // Re-trigger fade-in animation
+            setTimeout(() => {
+                accountCards.forEach((card, index) => {
+                    card.style.opacity = '0';
+                    card.style.transform = 'translateY(20px)';
+                    setTimeout(() => {
+                        card.style.transition = 'all 300ms ease-out';
+                        card.style.opacity = '1';
+                        card.style.transform = 'translateY(0)';
+                    }, index * 50);
+                });
+            }, 50);
+        }
+
+        // Account detail functions
+        function viewAccountDetails(type, name) {
+            const modalTitle = document.getElementById('modalTitle');
+            const modalContent = document.getElementById('modalContent');
+            
+            modalTitle.textContent = name + ' Details';
+            
+            // Generate mock detailed information based on account type
+            const accountDetails = generateAccountDetails(type, name);
+            modalContent.innerHTML = accountDetails;
+            
+            accountModal.classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function generateAccountDetails(type, name) {
+            const commonDetails = `
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="space-y-4">
+                        <div>
+                            <h4 class="text-sm font-medium text-text-secondary mb-2">Account Information</h4>
+                            <div class="space-y-2">
+                                <div class="flex justify-between">
+                                    <span class="text-sm text-text-secondary">Account Type</span>
+                                    <span class="text-sm font-medium text-primary">${name}</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span class="text-sm text-text-secondary">Account Number</span>
+                                    <span class="text-sm font-medium text-primary">****${Math.floor(Math.random() * 9000) + 1000}</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span class="text-sm text-text-secondary">Routing Number</span>
+                                    <span class="text-sm font-medium text-primary">021000021</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span class="text-sm text-text-secondary">Opened</span>
+                                    <span class="text-sm font-medium text-primary">March 15, 2023</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="space-y-4">
+                        <div>
+                            <h4 class="text-sm font-medium text-text-secondary mb-2">Recent Activity</h4>
+                            <div class="space-y-2">
+                                <div class="flex items-center justify-between p-2 bg-primary-50 rounded">
+                                    <span class="text-sm text-primary">Direct Deposit</span>
+                                    <span class="text-sm font-medium text-success-600">+$2,500.00</span>
+                                </div>
+                                <div class="flex items-center justify-between p-2 bg-primary-50 rounded">
+                                    <span class="text-sm text-primary">ATM Withdrawal</span>
+                                    <span class="text-sm font-medium text-error-600">-$200.00</span>
+                                </div>
+                                <div class="flex items-center justify-between p-2 bg-primary-50 rounded">
+                                    <span class="text-sm text-primary">Interest Payment</span>
+                                    <span class="text-sm font-medium text-success-600">+$45.23</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="flex space-x-4 pt-4">
+                    <button class="flex-1 bg-gradient-to-r from-secondary to-secondary-700 text-surface py-2 px-4 rounded-lg font-medium hover:from-secondary-700 hover:to-secondary-800 transition-all duration-200" onclick="initiateTransfer()">
+                        Transfer Funds
+                    </button>
+                    <button class="flex-1 border border-border text-primary py-2 px-4 rounded-lg font-medium hover:bg-primary-50 transition-colors" onclick="downloadStatement()">
+                        Download Statement
+                    </button>
+                </div>
+            `;
+            
+            return commonDetails;
+        }
+
+        function closeModal() {
+            accountModal.classList.add('hidden');
+            document.body.style.overflow = '';
+        }
+
+        // Quick action functions
+        function downloadStatements() {
+            alert('Statement download feature would be implemented here. This would generate and download PDF statements for selected accounts.');
+        }
+
+        function openNewAccount() {
+            alert('New account opening process would be initiated here. This would guide users through account selection and application.');
+        }
+
+        function contactManager() {
+            alert('Relationship manager contact feature would be implemented here. This would initiate a secure message or schedule a call.');
+        }
+
+        function initiateTransfer() {
+            closeModal();
+            window.location.href = 'transfer_payments.html';
+        }
+
+        function downloadStatement() {
+            alert('Individual account statement download would be implemented here.');
+            closeModal();
+        }
+
+        // Initialize fade-in animations
+        document.addEventListener('DOMContentLoaded', function() {
+            const fadeElements = document.querySelectorAll('.fade-in');
+            fadeElements.forEach((el, index) => {
+                setTimeout(() => {
+                    el.style.opacity = '1';
+                    el.style.transform = 'translateY(0)';
+                }, index * 100);
+            });
+        });
+
+        // Notification badge animation
+        notificationBtn.addEventListener('click', function() {
+            const badge = this.querySelector('span');
+            badge.classList.add('animate-pulse');
+            setTimeout(() => {
+                badge.classList.remove('animate-pulse');
+            }, 1000);
+        });
+
+        // Close modal when clicking outside
+        accountModal.addEventListener('click', function(e) {
+            if (e.target === accountModal) {
+                closeModal();
+            }
+        });
+
+        // Escape key to close modal
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && !accountModal.classList.contains('hidden')) {
+                closeModal();
+            }
+        });
+
+        // Real-time balance updates simulation
+        function updateAccountBalances() {
+            const accountCards = document.querySelectorAll('.account-card');
+            accountCards.forEach(card => {
+                const balanceElement = card.querySelector('p.text-2xl');
+                if (balanceElement) {
+                    const currentBalance = parseFloat(balanceElement.textContent.replace(/[$,]/g, ''));
+                    const fluctuation = (Math.random() - 0.5) * 50; // Small random fluctuation
+                    const newBalance = Math.max(0, currentBalance + fluctuation);
+                    balanceElement.textContent = `$${newBalance.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
+                    card.setAttribute('data-balance', newBalance.toString());
+                }
+            });
+        }
+
+        // Update balances every 60 seconds (simulation)
+        setInterval(updateAccountBalances, 60000);
+
+        // Performance monitoring
+        window.addEventListener('load', function() {
+            const loadTime = performance.now();
+            console.log(`Accounts Overview loaded in ${loadTime.toFixed(2)}ms`);
+        });
+    </script>
+<script id="dhws-dataInjector" src="../public/dhws-data-injector.js"></script>
+</body>
+</html>

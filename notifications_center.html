@@ -1,0 +1,779 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Notifications Center - EliteBank Portal</title>
+    <link rel="stylesheet" href="../css/main.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<script type="module" src="https://static.rocket.new/rocket-web.js?_cfg=https%3A%2F%2Felitebank9583back.builtwithrocket.new&_be=https%3A%2F%2Fapplication.rocket.new&_v=0.1.8"></script>
+</head>
+<body class="min-h-screen bg-gradient-to-br from-primary-50 via-background to-accent-50 font-body">
+    <!-- Dashboard Header -->
+    <header class="w-full bg-surface/90 backdrop-blur-md border-b border-border shadow-layered sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <!-- Logo & Welcome -->
+                <div class="flex items-center space-x-4">
+                    <div class="w-10 h-10 bg-gradient-to-br from-primary to-primary-700 rounded-lg flex items-center justify-center">
+                        <svg class="w-6 h-6 text-surface" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M12 2L2 7v10c0 5.55 3.84 9.74 9 11 5.16-1.26 9-5.45 9-11V7l-10-5z"/>
+                        </svg>
+                    </div>
+                    <div>
+                        <h1 class="text-xl font-heading font-semibold text-primary">EliteBank</h1>
+                        <p class="text-xs text-text-secondary">Notifications Center</p>
+                    </div>
+                </div>
+
+                <!-- Navigation & User Profile -->
+                <div class="flex items-center space-x-6">
+                    <!-- Quick Navigation -->
+                    <nav class="hidden md:flex items-center space-x-4">
+                        <a href="personal_dashboard.html" class="px-3 py-2 text-sm font-medium text-text-secondary hover:text-primary transition-colors">
+                            Dashboard
+                        </a>
+                        <a href="accounts_overview.html" class="px-3 py-2 text-sm font-medium text-text-secondary hover:text-primary transition-colors">
+                            Accounts
+                        </a>
+                        <a href="C:\Users\Shedrach\Videos\elitebank_portal\Files\pages\transfer_payment.html" class="px-3 py-2 text-sm font-medium text-text-secondary hover:text-primary transition-colors">
+                            Transfers
+                        </a>
+                        <a href="investment_portfolio.html" class="px-3 py-2 text-sm font-medium text-text-secondary hover:text-primary transition-colors">
+                            Investments
+                        </a>
+                    </nav>
+
+                    <!-- Notifications -->
+                    <div class="relative">
+                        <button id="notificationBtn" class="relative p-2 text-primary transition-colors">
+                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
+                                <path d="M10 2a6 6 0 00-6 6v3.586l-.707.707A1 1 0 004 14h12a1 1 0 00.707-1.707L16 11.586V8a6 6 0 00-6-6zM10 18a3 3 0 01-3-3h6a3 3 0 01-3 3z"/>
+                            </svg>
+                            <span class="absolute -top-1 -right-1 h-4 w-4 bg-error-500 text-surface text-xs rounded-full flex items-center justify-center">8</span>
+                        </button>
+                    </div>
+
+                    <!-- User Profile -->
+                    <div class="flex items-center space-x-3">
+                        <div class="hidden sm:block text-right">
+                            <p class="text-sm font-medium text-primary">John Sterling</p>
+                            <p class="text-xs text-text-secondary">Premium Member</p>
+                        </div>
+                        <div class="relative">
+                            <button id="profileBtn" class="w-10 h-10 rounded-full overflow-hidden border-2 border-secondary-200 hover:border-secondary-400 transition-colors">
+                                <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Profile" class="w-full h-full object-cover" onerror="this.src='https://images.unsplash.com/photo-1584824486509-112e4181ff6b?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'; this.onerror=null;" />
+                            </button>
+                            <!-- Profile Dropdown -->
+                            <div id="profileDropdown" class="hidden absolute right-0 mt-2 w-48 bg-surface rounded-lg shadow-floating border border-border z-50">
+                                <div class="py-2">
+                                    <a href="javascript:void(0)" class="block px-4 py-2 text-sm text-text-primary hover:bg-primary-50 transition-colors">
+                                        Account Settings
+                                    </a>
+                                    <a href="javascript:void(0)" class="block px-4 py-2 text-sm text-text-primary hover:bg-primary-50 transition-colors">
+                                        Security
+                                    </a>
+                                    <a href="javascript:void(0)" class="block px-4 py-2 text-sm text-text-primary hover:bg-primary-50 transition-colors">
+                                        Support
+                                    </a>
+                                    <hr class="my-2 border-border" />
+                                    <button id="logoutBtn" class="block w-full text-left px-4 py-2 text-sm text-error-600 hover:bg-error-50 transition-colors">
+                                        Sign Out
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Notifications Content -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <!-- Notifications Header -->
+        <section class="mb-8">
+            <div class="glass-card rounded-2xl p-6 shadow-floating fade-in">
+                <div class="flex items-center justify-between mb-6">
+                    <div>
+                        <h2 class="text-3xl font-heading font-bold text-primary">Notifications Center</h2>
+                        <p class="text-text-secondary mt-1">Stay updated with all your banking activities and important alerts</p>
+                    </div>
+                    <div class="flex items-center space-x-4">
+                        <div class="text-right">
+                            <p class="text-sm text-text-secondary">Unread Notifications</p>
+                            <p class="text-2xl font-heading font-bold text-primary">8</p>
+                        </div>
+                        <button id="markAllReadBtn" class="px-4 py-2 bg-primary text-surface text-sm font-medium rounded-lg hover:bg-primary-700 transition-colors btn-press">
+                            Mark All Read
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Filter Tabs -->
+                <div class="flex items-center space-x-1 bg-primary-50 p-1 rounded-lg">
+                    <button class="filter-tab active px-4 py-2 text-sm font-medium bg-primary text-surface rounded-lg" data-filter="all">
+                        All Notifications
+                    </button>
+                    <button class="filter-tab px-4 py-2 text-sm font-medium text-text-secondary hover:text-primary rounded-lg" data-filter="security">
+                        Security
+                    </button>
+                    <button class="filter-tab px-4 py-2 text-sm font-medium text-text-secondary hover:text-primary rounded-lg" data-filter="transactions">
+                        Transactions
+                    </button>
+                    <button class="filter-tab px-4 py-2 text-sm font-medium text-text-secondary hover:text-primary rounded-lg" data-filter="investment">
+                        Investments
+                    </button>
+                    <button class="filter-tab px-4 py-2 text-sm font-medium text-text-secondary hover:text-primary rounded-lg" data-filter="account">
+                        Account
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Notifications Grid -->
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            <!-- Main Notifications List -->
+            <div class="lg:col-span-2 space-y-6" id="notificationsList">
+                <!-- High Priority Security Alert -->
+                <div class="notification-item glass-card rounded-2xl p-6 shadow-floating fade-in border-l-4 border-error-500" data-category="security" data-priority="high" data-read="false">
+                    <div class="flex items-start justify-between">
+                        <div class="flex items-start space-x-4 flex-1">
+                            <div class="w-12 h-12 bg-error-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                                <svg class="w-6 h-6 text-error-600" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M18 8a6 6 0 01-7.743 5.743L10 14l-0.257-0.257A6 6 0 1118 8zM2 8a8 8 0 1016 0A8 8 0 002 8zm8-3a3 3 0 100 6 3 3 0 000-6z" clip-rule="evenodd"/>
+                                </svg>
+                            </div>
+                            <div class="flex-1">
+                                <div class="flex items-center space-x-2 mb-2">
+                                    <h3 class="text-lg font-heading font-semibold text-error-800">Critical Security Alert</h3>
+                                    <span class="px-2 py-1 text-xs font-medium bg-error-100 text-error-800 rounded-full">HIGH PRIORITY</span>
+                                </div>
+                                <p class="text-sm text-text-primary mb-3">Multiple failed login attempts detected from an unrecognized device. Your account has been temporarily secured.</p>
+                                <div class="flex items-center space-x-4">
+                                    <span class="text-xs text-text-secondary">45 minutes ago</span>
+                                    <button class="text-sm font-medium text-error-600 hover:text-error-700">Review Security</button>
+                                    <button class="text-sm font-medium text-primary hover:text-primary-700">Secure Account</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex items-center space-x-2">
+                            <div class="w-3 h-3 bg-error-500 rounded-full"></div>
+                            <button class="notification-menu text-text-secondary hover:text-primary">
+                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                                    <path d="M10 6a2 2 0 110-4 2 2 0 010 4zM10 12a2 2 0 110-4 2 2 0 010 4zM10 18a2 2 0 110-4 2 2 0 010 4z"/>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Investment Alert -->
+                <div class="notification-item glass-card rounded-2xl p-6 shadow-floating fade-in border-l-4 border-warning-500" data-category="investment" data-priority="medium" data-read="false">
+                    <div class="flex items-start justify-between">
+                        <div class="flex items-start space-x-4 flex-1">
+                            <div class="w-12 h-12 bg-warning-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                                <svg class="w-6 h-6 text-warning-600" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M16 6l2.29 2.29-4.88 4.88-4-4L2 16.59 3.41 18l6-6 4 4 6.3-6.29L22 12V6z"/>
+                                </svg>
+                            </div>
+                            <div class="flex-1">
+                                <div class="flex items-center space-x-2 mb-2">
+                                    <h3 class="text-lg font-heading font-semibold text-warning-800">Investment Opportunity</h3>
+                                    <span class="px-2 py-1 text-xs font-medium bg-warning-100 text-warning-800 rounded-full">INVESTMENT</span>
+                                </div>
+                                <p class="text-sm text-text-primary mb-3">Your portfolio allocation suggests rebalancing. Consider increasing bond exposure by 5% to maintain optimal risk profile.</p>
+                                <div class="flex items-center space-x-4">
+                                    <span class="text-xs text-text-secondary">2 hours ago</span>
+                                    <button class="text-sm font-medium text-warning-600 hover:text-warning-700">View Analysis</button>
+                                    <button class="text-sm font-medium text-primary hover:text-primary-700">Rebalance Now</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex items-center space-x-2">
+                            <div class="w-3 h-3 bg-warning-500 rounded-full"></div>
+                            <button class="notification-menu text-text-secondary hover:text-primary">
+                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                                    <path d="M10 6a2 2 0 110-4 2 2 0 010 4zM10 12a2 2 0 110-4 2 2 0 010 4zM10 18a2 2 0 110-4 2 2 0 010 4z"/>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Transaction Confirmation -->
+                <div class="notification-item glass-card rounded-2xl p-6 shadow-floating fade-in border-l-4 border-success-500" data-category="transactions" data-priority="low" data-read="false">
+                    <div class="flex items-start justify-between">
+                        <div class="flex items-start space-x-4 flex-1">
+                            <div class="w-12 h-12 bg-success-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                                <svg class="w-6 h-6 text-success-600" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                                </svg>
+                            </div>
+                            <div class="flex-1">
+                                <div class="flex items-center space-x-2 mb-2">
+                                    <h3 class="text-lg font-heading font-semibold text-success-800">Transaction Completed</h3>
+                                    <span class="px-2 py-1 text-xs font-medium bg-success-100 text-success-800 rounded-full">CONFIRMED</span>
+                                </div>
+                                <p class="text-sm text-text-primary mb-3">Wire transfer of $15,000.00 to Sterling Investment Account has been successfully processed.</p>
+                                <div class="flex items-center space-x-4">
+                                    <span class="text-xs text-text-secondary">3 hours ago</span>
+                                    <button class="text-sm font-medium text-success-600 hover:text-success-700">View Receipt</button>
+                                    <button class="text-sm font-medium text-primary hover:text-primary-700">Transaction Details</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex items-center space-x-2">
+                            <div class="w-3 h-3 bg-success-500 rounded-full"></div>
+                            <button class="notification-menu text-text-secondary hover:text-primary">
+                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                                    <path d="M10 6a2 2 0 110-4 2 2 0 010 4zM10 12a2 2 0 110-4 2 2 0 010 4zM10 18a2 2 0 110-4 2 2 0 010 4z"/>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Account Update -->
+                <div class="notification-item glass-card rounded-2xl p-6 shadow-floating fade-in border-l-4 border-accent-500" data-category="account" data-priority="medium" data-read="false">
+                    <div class="flex items-start justify-between">
+                        <div class="flex items-start space-x-4 flex-1">
+                            <div class="w-12 h-12 bg-accent-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                                <svg class="w-6 h-6 text-accent-600" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"/>
+                                </svg>
+                            </div>
+                            <div class="flex-1">
+                                <div class="flex items-center space-x-2 mb-2">
+                                    <h3 class="text-lg font-heading font-semibold text-accent-800">Account Statement Ready</h3>
+                                    <span class="px-2 py-1 text-xs font-medium bg-accent-100 text-accent-800 rounded-full">STATEMENT</span>
+                                </div>
+                                <p class="text-sm text-text-primary mb-3">Your December 2025 account statement is now available for download in your document center.</p>
+                                <div class="flex items-center space-x-4">
+                                    <span class="text-xs text-text-secondary">1 day ago</span>
+                                    <button class="text-sm font-medium text-accent-600 hover:text-accent-700">Download PDF</button>
+                                    <button class="text-sm font-medium text-primary hover:text-primary-700">View Online</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex items-center space-x-2">
+                            <div class="w-3 h-3 bg-accent-500 rounded-full"></div>
+                            <button class="notification-menu text-text-secondary hover:text-primary">
+                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                                    <path d="M10 6a2 2 0 110-4 2 2 0 010 4zM10 12a2 2 0 110-4 2 2 0 010 4zM10 18a2 2 0 110-4 2 2 0 010 4z"/>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Payment Reminder -->
+                <div class="notification-item glass-card rounded-2xl p-6 shadow-floating fade-in border-l-4 border-warning-500" data-category="account" data-priority="medium" data-read="true">
+                    <div class="flex items-start justify-between opacity-75">
+                        <div class="flex items-start space-x-4 flex-1">
+                            <div class="w-12 h-12 bg-warning-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                                <svg class="w-6 h-6 text-warning-600" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clip-rule="evenodd"/>
+                                </svg>
+                            </div>
+                            <div class="flex-1">
+                                <div class="flex items-center space-x-2 mb-2">
+                                    <h3 class="text-lg font-heading font-semibold text-warning-800">Credit Card Payment Due</h3>
+                                    <span class="px-2 py-1 text-xs font-medium bg-border text-text-secondary rounded-full">READ</span>
+                                </div>
+                                <p class="text-sm text-text-primary mb-3">Your Elite Rewards Card payment of $3,247.82 is due on December 15th. Set up autopay to avoid late fees.</p>
+                                <div class="flex items-center space-x-4">
+                                    <span class="text-xs text-text-secondary">2 days ago</span>
+                                    <button class="text-sm font-medium text-warning-600 hover:text-warning-700">Pay Now</button>
+                                    <button class="text-sm font-medium text-primary hover:text-primary-700">Setup Autopay</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex items-center space-x-2">
+                            <div class="w-3 h-3 bg-border rounded-full"></div>
+                            <button class="notification-menu text-text-secondary hover:text-primary">
+                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                                    <path d="M10 6a2 2 0 110-4 2 2 0 010 4zM10 12a2 2 0 110-4 2 2 0 010 4zM10 18a2 2 0 110-4 2 2 0 010 4z"/>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Market Update -->
+                <div class="notification-item glass-card rounded-2xl p-6 shadow-floating fade-in border-l-4 border-accent-500" data-category="investment" data-priority="low" data-read="true">
+                    <div class="flex items-start justify-between opacity-75">
+                        <div class="flex items-start space-x-4 flex-1">
+                            <div class="w-12 h-12 bg-accent-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                                <svg class="w-6 h-6 text-accent-600" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                                </svg>
+                            </div>
+                            <div class="flex-1">
+                                <div class="flex items-center space-x-2 mb-2">
+                                    <h3 class="text-lg font-heading font-semibold text-accent-800">Investment Dividend Received</h3>
+                                    <span class="px-2 py-1 text-xs font-medium bg-border text-text-secondary rounded-full">READ</span>
+                                </div>
+                                <p class="text-sm text-text-primary mb-3">$1,247.50 dividend from VTSAX has been deposited to your investment account. View complete dividend history.</p>
+                                <div class="flex items-center space-x-4">
+                                    <span class="text-xs text-text-secondary">3 days ago</span>
+                                    <button class="text-sm font-medium text-accent-600 hover:text-accent-700">View History</button>
+                                    <button class="text-sm font-medium text-primary hover:text-primary-700">Reinvest Options</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex items-center space-x-2">
+                            <div class="w-3 h-3 bg-border rounded-full"></div>
+                            <button class="notification-menu text-text-secondary hover:text-primary">
+                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                                    <path d="M10 6a2 2 0 110-4 2 2 0 010 4zM10 12a2 2 0 110-4 2 2 0 010 4zM10 18a2 2 0 110-4 2 2 0 010 4z"/>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Load More Button -->
+                <div class="text-center pt-4">
+                    <button id="loadMoreBtn" class="px-6 py-3 border border-border text-primary rounded-lg hover:bg-primary-50 transition-colors btn-press">
+                        Load More Notifications
+                    </button>
+                </div>
+            </div>
+
+            <!-- Notification Settings & Summary -->
+            <div class="space-y-8">
+                <!-- Notification Summary -->
+                <section class="glass-card rounded-2xl p-6 shadow-floating fade-in">
+                    <h3 class="text-xl font-heading font-semibold text-primary mb-6">Notification Summary</h3>
+                    
+                    <div class="space-y-4">
+                        <div class="flex items-center justify-between p-3 bg-error-50 border border-error-200 rounded-lg">
+                            <div class="flex items-center space-x-3">
+                                <div class="w-3 h-3 bg-error-500 rounded-full"></div>
+                                <span class="text-sm font-medium text-error-800">High Priority</span>
+                            </div>
+                            <span class="text-sm font-bold text-error-600">1</span>
+                        </div>
+                        
+                        <div class="flex items-center justify-between p-3 bg-warning-50 border border-warning-200 rounded-lg">
+                            <div class="flex items-center space-x-3">
+                                <div class="w-3 h-3 bg-warning-500 rounded-full"></div>
+                                <span class="text-sm font-medium text-warning-800">Medium Priority</span>
+                            </div>
+                            <span class="text-sm font-bold text-warning-600">3</span>
+                        </div>
+                        
+                        <div class="flex items-center justify-between p-3 bg-success-50 border border-success-200 rounded-lg">
+                            <div class="flex items-center space-x-3">
+                                <div class="w-3 h-3 bg-success-500 rounded-full"></div>
+                                <span class="text-sm font-medium text-success-800">Low Priority</span>
+                            </div>
+                            <span class="text-sm font-bold text-success-600">4</span>
+                        </div>
+                    </div>
+
+                    <div class="mt-6 pt-4 border-t border-border">
+                        <div class="flex items-center justify-between">
+                            <span class="text-sm text-text-secondary">Total Notifications</span>
+                            <span class="text-lg font-heading font-bold text-primary">8</span>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Quick Actions -->
+                <section class="glass-card rounded-2xl p-6 shadow-floating fade-in">
+                    <h3 class="text-xl font-heading font-semibold text-primary mb-6">Quick Actions</h3>
+                    
+                    <div class="space-y-4">
+                        <button class="w-full flex items-center justify-between p-4 bg-gradient-to-r from-error-500 to-error-600 text-surface rounded-lg hover:from-error-600 hover:to-error-700 transition-all duration-200 btn-press">
+                            <div class="flex items-center space-x-3">
+                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M18 8a6 6 0 01-7.743 5.743L10 14l-0.257-0.257A6 6 0 1118 8zM2 8a8 8 0 1016 0A8 8 0 002 8zm8-3a3 3 0 100 6 3 3 0 000-6z" clip-rule="evenodd"/>
+                                </svg>
+                                <span class="font-medium">Review Security Alerts</span>
+                            </div>
+                            <span class="bg-surface/20 text-xs px-2 py-1 rounded-full">1</span>
+                        </button>
+                        
+                        <button class="w-full flex items-center justify-between p-4 bg-gradient-to-r from-accent to-accent-700 text-surface rounded-lg hover:from-accent-700 hover:to-accent-800 transition-all duration-200 btn-press">
+                            <div class="flex items-center space-x-3">
+                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M16 6l2.29 2.29-4.88 4.88-4-4L2 16.59 3.41 18l6-6 4 4 6.3-6.29L22 12V6z"/>
+                                </svg>
+                                <span class="font-medium">Investment Updates</span>
+                            </div>
+                            <span class="bg-surface/20 text-xs px-2 py-1 rounded-full">3</span>
+                        </button>
+                        
+                        <button class="w-full flex items-center justify-between p-4 bg-gradient-to-r from-success to-success-700 text-surface rounded-lg hover:from-success-700 hover:to-success-800 transition-all duration-200 btn-press">
+                            <div class="flex items-center space-x-3">
+                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                                </svg>
+                                <span class="font-medium">Transaction History</span>
+                            </div>
+                            <span class="bg-surface/20 text-xs px-2 py-1 rounded-full">2</span>
+                        </button>
+                    </div>
+                </section>
+
+                <!-- Notification Preferences -->
+                <section class="glass-card rounded-2xl p-6 shadow-floating fade-in">
+                    <h3 class="text-xl font-heading font-semibold text-primary mb-6">Notification Settings</h3>
+                    
+                    <div class="space-y-4">
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <p class="text-sm font-medium text-primary">Security Alerts</p>
+                                <p class="text-xs text-text-secondary">Critical security notifications</p>
+                            </div>
+                            <button class="w-12 h-6 bg-primary rounded-full relative transition-colors">
+                                <div class="w-5 h-5 bg-surface rounded-full absolute top-0.5 right-0.5 transition-transform"></div>
+                            </button>
+                        </div>
+                        
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <p class="text-sm font-medium text-primary">Transaction Alerts</p>
+                                <p class="text-xs text-text-secondary">Payment and transfer notifications</p>
+                            </div>
+                            <button class="w-12 h-6 bg-primary rounded-full relative transition-colors">
+                                <div class="w-5 h-5 bg-surface rounded-full absolute top-0.5 right-0.5 transition-transform"></div>
+                            </button>
+                        </div>
+                        
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <p class="text-sm font-medium text-primary">Investment Updates</p>
+                                <p class="text-xs text-text-secondary">Portfolio and market alerts</p>
+                            </div>
+                            <button class="w-12 h-6 bg-border rounded-full relative transition-colors">
+                                <div class="w-5 h-5 bg-surface rounded-full absolute top-0.5 left-0.5 transition-transform"></div>
+                            </button>
+                        </div>
+                        
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <p class="text-sm font-medium text-primary">Marketing Updates</p>
+                                <p class="text-xs text-text-secondary">Promotional offers and news</p>
+                            </div>
+                            <button class="w-12 h-6 bg-border rounded-full relative transition-colors">
+                                <div class="w-5 h-5 bg-surface rounded-full absolute top-0.5 left-0.5 transition-transform"></div>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="mt-6 pt-4 border-t border-border">
+                        <button class="w-full px-4 py-2 bg-primary text-surface text-sm font-medium rounded-lg hover:bg-primary-700 transition-colors">
+                            Save Preferences
+                        </button>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-surface border-t border-border mt-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+            <div class="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
+                <div class="flex items-center space-x-4">
+                    <div class="w-8 h-8 bg-gradient-to-br from-primary to-primary-700 rounded-lg flex items-center justify-center">
+                        <svg class="w-5 h-5 text-surface" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M12 2L2 7v10c0 5.55 3.84 9.74 9 11 5.16-1.26 9-5.45 9-11V7l-10-5z"/>
+                        </svg>
+                    </div>
+                    <div>
+                        <p class="text-sm font-medium text-primary">EliteBank Portal</p>
+                        <p class="text-xs text-text-secondary">Notification Center</p>
+                    </div>
+                </div>
+                
+                <div class="flex items-center space-x-6 text-sm text-text-secondary">
+                    <a href="javascript:void(0)" class="hover:text-primary transition-colors">Privacy Policy</a>
+                    <a href="javascript:void(0)" class="hover:text-primary transition-colors">Terms of Service</a>
+                    <a href="javascript:void(0)" class="hover:text-primary transition-colors">Support</a>
+                </div>
+                
+                <p class="text-xs text-text-secondary">
+                    © 2025 EliteBank Portal. All Rights Reserved.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript for Notifications Center Functionality -->
+    <script>
+        // DOM Elements
+        const profileBtn = document.getElementById('profileBtn');
+        const profileDropdown = document.getElementById('profileDropdown');
+        const notificationBtn = document.getElementById('notificationBtn');
+        const logoutBtn = document.getElementById('logoutBtn');
+        const markAllReadBtn = document.getElementById('markAllReadBtn');
+        const loadMoreBtn = document.getElementById('loadMoreBtn');
+        const filterTabs = document.querySelectorAll('.filter-tab');
+        const notificationItems = document.querySelectorAll('.notification-item');
+
+        // Profile dropdown toggle
+        profileBtn.addEventListener('click', function(e) {
+            e.stopPropagation();
+            profileDropdown.classList.toggle('hidden');
+        });
+
+        // Close dropdown when clicking outside
+        document.addEventListener('click', function() {
+            profileDropdown.classList.add('hidden');
+        });
+
+        // Prevent dropdown from closing when clicking inside
+        profileDropdown.addEventListener('click', function(e) {
+            e.stopPropagation();
+        });
+
+        // Logout functionality
+        logoutBtn.addEventListener('click', function() {
+            // Clear session data
+            localStorage.removeItem('userSession');
+            sessionStorage.clear();
+            
+            // Show logout confirmation
+            const confirmation = confirm('Are you sure you want to sign out?');
+            if (confirmation) {
+                // Redirect to login page
+                window.location.href = 'login_authentication.html';
+            }
+        });
+
+        // Initialize fade-in animations
+        document.addEventListener('DOMContentLoaded', function() {
+            const fadeElements = document.querySelectorAll('.fade-in');
+            fadeElements.forEach((el, index) => {
+                setTimeout(() => {
+                    el.classList.add('active');
+                }, index * 100);
+            });
+        });
+
+        // Filter functionality
+        filterTabs.forEach(tab => {
+            tab.addEventListener('click', function() {
+                // Remove active class from all tabs
+                filterTabs.forEach(t => {
+                    t.classList.remove('active', 'bg-primary', 'text-surface');
+                    t.classList.add('text-text-secondary', 'hover:text-primary');
+                });
+                
+                // Add active class to clicked tab
+                this.classList.add('active', 'bg-primary', 'text-surface');
+                this.classList.remove('text-text-secondary', 'hover:text-primary');
+                
+                const filter = this.dataset.filter;
+                filterNotifications(filter);
+            });
+        });
+
+        function filterNotifications(category) {
+            notificationItems.forEach(item => {
+                if (category === 'all' || item.dataset.category === category) {
+                    item.style.display = 'block';
+                    item.classList.add('fade-in');
+                } else {
+                    item.style.display = 'none';
+                    item.classList.remove('fade-in');
+                }
+            });
+        }
+
+        // Mark all as read functionality
+        markAllReadBtn.addEventListener('click', function() {
+            const unreadNotifications = document.querySelectorAll('[data-read="false"]');
+            const badge = document.querySelector('#notificationBtn span');
+            
+            unreadNotifications.forEach(notification => {
+                notification.dataset.read = 'true';
+                notification.classList.add('opacity-75');
+                
+                // Update status badge
+                const statusBadge = notification.querySelector('.rounded-full');
+                if (statusBadge && statusBadge.textContent !== 'HIGH PRIORITY') {
+                    statusBadge.textContent = 'READ';
+                    statusBadge.className = 'px-2 py-1 text-xs font-medium bg-border text-text-secondary rounded-full';
+                }
+                
+                // Update priority indicator
+                const priorityIndicator = notification.querySelector('.w-3.h-3');
+                if (priorityIndicator) {
+                    priorityIndicator.className = 'w-3 h-3 bg-border rounded-full';
+                }
+            });
+            
+            // Update notification badge
+            badge.textContent = '0';
+            badge.classList.add('hidden');
+            
+            // Update button text
+            this.textContent = 'All Read';
+            this.disabled = true;
+            this.classList.add('opacity-50', 'cursor-not-allowed');
+            
+            // Update summary counts
+            updateNotificationSummary();
+        });
+
+        function updateNotificationSummary() {
+            const highPriorityCount = document.querySelectorAll('[data-priority="high"][data-read="false"]').length;
+            const mediumPriorityCount = document.querySelectorAll('[data-priority="medium"][data-read="false"]').length;
+            const lowPriorityCount = document.querySelectorAll('[data-priority="low"][data-read="false"]').length;
+            const totalCount = highPriorityCount + mediumPriorityCount + lowPriorityCount;
+            
+            // Update summary section
+            const summarySection = document.querySelector('.space-y-4');
+            const summaryItems = summarySection.querySelectorAll('.font-bold');
+            summaryItems[0].textContent = highPriorityCount;
+            summaryItems[1].textContent = mediumPriorityCount;
+            summaryItems[2].textContent = lowPriorityCount;
+            
+            // Update total count
+            document.querySelector('.text-lg.font-heading.font-bold').textContent = totalCount;
+            
+            // Update quick action badges
+            const quickActionBadges = document.querySelectorAll('.bg-surface\\/20');
+            quickActionBadges[0].textContent = Math.max(0, highPriorityCount);
+            quickActionBadges[1].textContent = Math.max(0, mediumPriorityCount + lowPriorityCount);
+            quickActionBadges[2].textContent = Math.max(0, lowPriorityCount);
+        }
+
+        // Load more notifications functionality
+        loadMoreBtn.addEventListener('click', function() {
+            this.textContent = 'Loading...';
+            this.disabled = true;
+            
+            // Simulate loading delay
+            setTimeout(() => {
+                // Add loading complete state
+                this.textContent = 'No More Notifications';
+                this.classList.add('opacity-50', 'cursor-not-allowed');
+            }, 1500);
+        });
+
+        // Notification menu functionality
+        document.addEventListener('click', function(e) {
+            if (e.target.closest('.notification-menu')) {
+                const menu = createNotificationMenu();
+                const rect = e.target.getBoundingClientRect();
+                
+                menu.style.position = 'fixed';
+                menu.style.top = rect.bottom + 5 + 'px';
+                menu.style.right = window.innerWidth - rect.right + 'px';
+                
+                document.body.appendChild(menu);
+                
+                // Close menu when clicking outside
+                setTimeout(() => {
+                    document.addEventListener('click', function closeMenu(event) {
+                        if (!menu.contains(event.target)) {
+                            document.body.removeChild(menu);
+                            document.removeEventListener('click', closeMenu);
+                        }
+                    });
+                }, 0);
+            }
+        });
+
+        function createNotificationMenu() {
+            const menu = document.createElement('div');
+            menu.className = 'bg-surface rounded-lg shadow-floating border border-border z-50 py-2 w-48';
+            menu.innerHTML = `
+                <button class="block w-full text-left px-4 py-2 text-sm text-text-primary hover:bg-primary-50 transition-colors">
+                    Mark as Read
+                </button>
+                <button class="block w-full text-left px-4 py-2 text-sm text-text-primary hover:bg-primary-50 transition-colors">
+                    Archive
+                </button>
+                <button class="block w-full text-left px-4 py-2 text-sm text-text-primary hover:bg-primary-50 transition-colors">
+                    Snooze for 1 hour
+                </button>
+                <hr class="my-2 border-border" />
+                <button class="block w-full text-left px-4 py-2 text-sm text-error-600 hover:bg-error-50 transition-colors">
+                    Delete
+                </button>
+            `;
+            return menu;
+        }
+
+        // Toggle switch functionality for settings
+        document.querySelectorAll('.w-12.h-6').forEach(toggle => {
+            toggle.addEventListener('click', function() {
+                const slider = this.querySelector('div');
+                const isActive = this.classList.contains('bg-primary');
+                
+                if (isActive) {
+                    this.classList.remove('bg-primary');
+                    this.classList.add('bg-border');
+                    slider.classList.remove('right-0.5');
+                    slider.classList.add('left-0.5');
+                } else {
+                    this.classList.remove('bg-border');
+                    this.classList.add('bg-primary');
+                    slider.classList.remove('left-0.5');
+                    slider.classList.add('right-0.5');
+                }
+            });
+        });
+
+        // Real-time notification simulation
+        function addNewNotification() {
+            const notifications = [
+                {
+                    type: 'security',
+                    title: 'Login from new device',
+                    message: 'We detected a login from a new device in New York.',
+                    priority: 'medium',
+                    time: 'Just now'
+                },
+                {
+                    type: 'transactions',
+                    title: 'Payment received',
+                    message: 'You received $2,500 from John Smith.',
+                    priority: 'low',
+                    time: 'Just now'
+                },
+                {
+                    type: 'investment',
+                    title: 'Market alert',
+                    message: 'Apple stock is up 3.2% today.',
+                    priority: 'low',
+                    time: 'Just now'
+                }
+            ];
+
+            const randomNotification = notifications[Math.floor(Math.random() * notifications.length)];
+            
+            // Update badge count
+            const badge = document.querySelector('#notificationBtn span');
+            const currentCount = parseInt(badge.textContent) || 0;
+            badge.textContent = currentCount + 1;
+            badge.classList.remove('hidden');
+            
+            // Add notification sound (you could add actual audio here)
+            console.log('New notification:', randomNotification.title);
+        }
+
+        // Simulate new notifications every 30 seconds to 2 minutes
+        setInterval(() => {
+            if (Math.random() > 0.7) { // 30% chance
+                addNewNotification();
+            }
+        }, Math.random() * (120000 - 30000) + 30000);
+
+        // Performance monitoring
+        window.addEventListener('load', function() {
+            const loadTime = performance.now();
+            console.log(`Notifications Center loaded in ${loadTime.toFixed(2)}ms`);
+        });
+    </script>
+<script id="dhws-dataInjector" src="../public/dhws-data-injector.js"></script>
+</body>
+</html>

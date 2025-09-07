@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Transfer Payment - EliteBanking Portal</title>
+    <link rel="stylesheet" href="../css/main.css" />
+    <script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.3/build/qrcode.min.js"></script>
+    <!-- Header Navigation -->
+    <header class="bg-surface shadow-md border-b border-subtle">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <!-- Logo -->
+                 <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 bg-gradient-to-br from-primary-600 to-primary-800 rounded-lg flex items-center justify-center">
+                        <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M12 2L2 7v10c0 5.55 3.84 9.74 9 11 5.16-1.26 9-5.45 9-11V7l-10-5z"/>
+                            <path d="M9 12l2 2 4-4" stroke="currentColor" stroke-width="2" fill="none"/>
+                        </svg>
+                    </div>
+                    <div>
+                        <h1 class="text-xl font-bold text-primary-800">Elite Banking</h1>
+                        <p class="text-xs text-secondary-500">Secure Banking Portal</p>
+                    </div>
+                </div>
+                
+                <!-- Navigation -->
+                <nav class="hidden md:flex space-x-8">
+                    <a href="C:\Users\Shedrach\Videos\elitebank_portal\pages\personal_dashboard.html" class="text-primary font-medium border-b-2 border-accent px-1 pb-4">Dashboard</a>
+                    <a href="transfer_payment.html" class="text-primary font-medium border-b-2 border-accent px-1 pb-4">Transfer</a>
+                    <a href="payment_error_resolution.html" class="text-text-secondary hover:text-primary transition-colors duration-200 px-1 pb-4"></a>
+                    <a href="bitcoin_deposit.html" class="text-text-secondary hover:text-primary transition-colors duration-200 px-1 pb-4"></a>
+                </nav>
+
+                <!-- User Menu -->
+                <div class="flex items-center space-x-4">
+                    <div class="flex items-center space-x-2">
+                        <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="User Avatar" class="h-8 w-8 rounded-full object-cover" onerror="this.src='https://images.unsplash.com/photo-1584824486509-112e4181ff6b?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'; this.onerror=null;" />
+                        <span class="text-sm font-medium text-text-primary">John Sterling</span>  <p class="text-xs text-text-secondary">Premium Member</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 animate-page-transition">
+        <!-- Page Header -->
+        <div class="mb-8">
+            <h1 class="text-3xl font-semibold text-text-primary mb-2">Transfer Payment</h1>
+            <p class="text-text-secondary">Initiate secure transfers with real-time validation and Bitcoin integration</p>
+        </div>
+
+        <!-- Transfer Form Container -->
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            <!-- Main Transfer Form -->
+            <div class="lg:col-span-2">
+                <div class="card animate-fade-in">
+                    <div class="flex items-center justify-between mb-6">
+                        <h2 class="text-xl font-semibold text-text-primary">Transfer Details</h2>
+                        <div class="flex items-center space-x-2">
+                            <svg class="h-5 w-5 text-success" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                            </svg>
+                            <span class="text-sm text-success font-medium">SSL Secured</span>
+                        </div>
+                    </div>
+
+                    <form id="transferForm" class="space-y-6">
+                        <!-- Recipient Information -->
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <label for="recipientName" class="block text-sm font-medium text-text-primary mb-2">Recipient Name</label>
+                                <input type="text" id="recipientName" name="recipientName" class="input-field" placeholder="Enter recipient's full name" required />
+                            </div>
+                            <div>
+                                <label for="recipientAccount" class="block text-sm font-medium text-text-primary mb-2">Account Number</label>
+                                <input type="text" id="recipientAccount" name="recipientAccount" class="input-field font-mono" placeholder="XXXX-XXXX-XXXX-XXXX" required />
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <label for="bankName" class="block text-sm font-medium text-text-primary mb-2">Bank Name</label>
+                                <input type="text" id="bankName" name="bankName" class="input-field" placeholder="Enter bank name" required />
+                            </div>
+                            <div>
+                                <label for="routingNumber" class="block text-sm font-medium text-text-primary mb-2">Routing Number</label>
+                                <input type="text" id="routingNumber" name="routingNumber" class="input-field font-mono" placeholder="XXXXXXXXX" required />
+                            </div>
+                        </div>
+
+                        <!-- Transfer Amount -->
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <label for="transferAmount" class="block text-sm font-medium text-text-primary mb-2">Transfer Amount (USD)</label>
+                                <div class="relative">
+                                    <span class="absolute left-3 top-1/2 transform -translate-y-1/2 text-text-secondary">$</span>
+                                    <input type="number" id="transferAmount" name="transferAmount" class="input-field pl-8" placeholder="0.00" step="0.01" min="0" required />
+                                </div>
+                            </div>
+                            <div>
+                                <label for="currency" class="block text-sm font-medium text-text-primary mb-2">Currency</label>
+                                <select id="currency" name="currency" class="input-field">
+                                    <option value="USD">USD - US Dollar</option>
+                                    <option value="EUR">EUR - Euro</option>
+                                    <option value="GBP">GBP - British Pound</option>
+                                    <option value="JPY">JPY - Japanese Yen</option>
+                                    <option value="BTC">BTC - Bitcoin</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <!-- Payment Method -->
+                        <div>
+                            <label class="block text-sm font-medium text-text-primary mb-3">Payment Method</label>
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                                <label class="flex items-center p-4 border border-gray-300 rounded-lg cursor-pointer hover:bg-primary-50 transition-colors duration-200">
+                                    <input type="radio" name="paymentMethod" value="wire" class="mr-3" checked />
+                                    <div>
+                                        <div class="font-medium text-text-primary">Wire Transfer</div>
+                                        <div class="text-sm text-text-secondary">1-3 business days</div>
+                                    </div>
+                                </label>
+                                <label class="flex items-center p-4 border border-gray-300 rounded-lg cursor-pointer hover:bg-primary-50 transition-colors duration-200">
+                                    <input type="radio" name="paymentMethod" value="ach" class="mr-3" />
+                                    <div>
+                                        <div class="font-medium text-text-primary">ACH Transfer</div>
+                                        <div class="text-sm text-text-secondary">3-5 business days</div>
+                                    </div>
+                                </label>
+                                <label class="flex items-center p-4 border border-gray-300 rounded-lg cursor-pointer hover:bg-primary-50 transition-colors duration-200">
+                                    <input type="radio" name="paymentMethod" value="instant" class="mr-3" />
+                                    <div>
+                                        <div class="font-medium text-text-primary">External Transfer</div>
+                                        <div class="text-sm text-text-secondary">2 business days</div>
+                                    </div>
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- Transfer Purpose -->
+                        <div>
+                            <label for="transferPurpose" class="block text-sm font-medium text-text-primary mb-2">Transfer Purpose</label>
+                            <select id="transferPurpose" name="transferPurpose" class="input-field">
+                                <option value>Select purpose</option>
+                                <option value="personal">Personal Transfer</option>
+                                <option value="business">Business Payment</option>
+                                <option value="investment">Investment</option>
+                                <option value="loan">Loan Payment</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+
+                        <!-- Description -->
+                        <div>
+                            <label for="description" class="block text-sm font-medium text-text-primary mb-2">Description (Optional)</label>
+                            <textarea id="description" name="description" rows="3" class="input-field resize-none" placeholder="Add a note for this transfer..."></textarea>
+                        </div>
+
+                        <!-- Security Notice -->
+                        <div class="bg-primary-50 border border-primary-200 rounded-lg p-4">
+                            <div class="flex items-start">
+                                <svg class="h-5 w-5 text-primary mt-0.5 mr-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"/>
+                                </svg>
+                                <div>
+                                    <h4 class="text-sm font-medium text-primary mb-1">Security Notice</h4>
+                                    <p class="text-sm text-primary-700">Large transfers may require additional Bitcoin validation (0.045 BTC minimum) for enhanced security protocols.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Form Actions -->
+                        <div class="flex flex-col sm:flex-row gap-4 pt-6">
+                            <button type="submit" class="btn-primary flex-1 sm:flex-none">
+                                <svg class="h-5 w-5 mr-2 inline" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                                </svg>
+                                Review Transfer
+                            </button>
+                            <button type="button" class="btn-secondary flex-1 sm:flex-none" onclick="clearForm()">
+                                <svg class="h-5 w-5 mr-2 inline" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                                </svg>
+                                Cancel
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Transfer Summary Panel -->
+            <div class="lg:col-span-1">
+                <div class="card animate-slide-up">
+                    <h3 class="text-lg font-semibold text-text-primary mb-4">Transfer Summary</h3>
+                    
+                    <!-- Account Balance -->
+                    <div class="bg-accent-50 border border-accent-200 rounded-lg p-4 mb-6">
+                        <div class="flex justify-between items-center">
+                            <span class="text-sm font-medium text-accent-800">Available Balance</span>
+                            <span class="text-lg font-semibold text-accent-900">$129,847,567.50</span>
+                        </div>
+                    </div>
+
+                    <!-- Transfer Details -->
+                    <div class="space-y-4">
+                        <div class="flex justify-between">
+                            <span class="text-text-secondary">Transfer Amount</span>
+                            <span class="font-medium text-text-primary" id="summaryAmount">$0.00</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span class="text-text-secondary">Transfer Fee</span>
+                            <span class="font-medium text-text-primary" id="summaryFee">$0.00</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span class="text-text-secondary">Exchange Rate</span>
+                            <span class="font-medium text-text-primary" id="summaryRate">1.00 USD</span>
+                        </div>
+                        <hr class="border-gray-200" />
+                        <div class="flex justify-between">
+                            <span class="font-medium text-text-primary">Total Amount</span>
+                            <span class="font-semibold text-text-primary" id="summaryTotal">$0.00</span>
+                        </div>
+                    </div>
+
+                    <!-- Estimated Completion -->
+                    <div class="mt-6 p-4 bg-success-50 border border-success-200 rounded-lg">
+                        <div class="flex items-center">
+                            <svg class="h-5 w-5 text-success mr-2" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                            </svg>
+                            <div>
+                                <div class="text-sm font-medium text-success-800">Estimated Completion</div>
+                                <div class="text-sm text-success-700" id="estimatedTime">Select payment method</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Security Badges -->
+                    <div class="mt-6 pt-6 border-t border-gray-200">
+                        <div class="text-xs text-text-secondary mb-3">Security & Compliance</div>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-primary-100 text-primary-800">
+                                SSL Encrypted
+                            </span>
+                            <span class="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-success-100 text-success-800">
+                                FDIC Insured
+                            </span>
+                            <span class="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-accent-100 text-accent-800">
+                                SOC 2 Compliant
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Recent Transfers -->
+                <div class="card mt-6 animate-slide-up" style="animation-delay: 200ms;">
+                    <h3 class="text-lg font-semibold text-text-primary mb-4">Recent Transfers</h3>
+                    <div class="space-y-3">
+                        <div class="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
+                            <div class="flex items-center">
+                                <div class="h-8 w-8 bg-success-100 rounded-full flex items-center justify-center mr-3">
+                                    <svg class="h-4 w-4 text-success" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <div class="text-sm font-medium text-text-primary">Sarah Johnson</div>
+                                    <div class="text-xs text-text-secondary">Dec 5, 2025</div>
+                                </div>
+                            </div>
+                            <div class="text-sm font-medium text-text-primary">$2,500.00</div>
+                        </div>
+                        <div class="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
+                            <div class="flex items-center">
+                                <div class="h-8 w-8 bg-warning-100 rounded-full flex items-center justify-center mr-3">
+                                    <svg class="h-4 w-4 text-warning" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd"/>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <div class="text-sm font-medium text-text-primary">Tech Solutions Inc</div>
+                                    <div class="text-xs text-text-secondary">Dec 4, 2025</div>
+                                </div>
+                            </div>
+                            <div class="text-sm font-medium text-text-primary">$15,750.00</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Bitcoin Requirement Modal -->
+    <div id="bitcoinModal" class="fixed inset-0 bg-black bg-opacity-50 hidden z-50">
+        <div class="flex items-center justify-center min-h-screen p-4">
+            <div class="bg-surface rounded-lg shadow-lg max-w-md w-full p-6 animate-slide-up">
+                <div class="flex items-center mb-4">
+                    <div class="h-12 w-12 bg-warning-100 rounded-full flex items-center justify-center mr-4">
+                        <svg class="h-6 w-6 text-warning" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clip-rule="evenodd"/>
+                        </svg>
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-semibold text-text-primary">Bitcoin Validation Required</h3>
+                        <p class="text-sm text-text-secondary">Additional security verification needed</p>
+                    </div>
+                </div>
+                
+                <div class="mb-6">
+                    <p class="text-text-primary mb-4">This transfer requires Bitcoin validation for enhanced security. Please deposit the required amount:</p>
+                    <div class="bg-warning-50 border border-warning-200 rounded-lg p-4">
+                        <div class="text-center">
+                            <div class="text-2xl font-bold text-warning-800 font-mono">0.045 BTC</div>
+                            <div class="text-sm text-warning-700">Required for validation</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="flex space-x-3">
+                    <button onclick="redirectToBitcoinDeposit()" class="btn-primary flex-1">
+                        Proceed to Bitcoin Deposit
+                    </button>
+                    <button onclick="closeBitcoinModal()" class="btn-secondary">
+                        Cancel
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Form validation and Bitcoin requirement detection
+        document.getElementById('transferForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const amount = parseFloat(document.getElementById('transferAmount').value);
+            const recipientName = document.getElementById('recipientName').value;
+            const recipientAccount = document.getElementById('recipientAccount').value;
+            
+            // Validate required fields
+            if (!recipientName || !recipientAccount || !amount) {
+                alert('Please fill in all required fields.');
+                return;
+            }
+            
+            // Bitcoin requirement detection (amounts over $10,000 require Bitcoin validation)
+            if (amount > 10000) {
+                document.getElementById('bitcoinModal').classList.remove('hidden');
+            } else {
+                // Proceed with normal transfer
+                alert('Transfer submitted successfully! Redirecting to confirmation...');
+                // In a real app, this would redirect to confirmation page
+            }
+        });
+
+        // Update transfer summary in real-time
+        document.getElementById('transferAmount').addEventListener('input', function() {
+            const amount = parseFloat(this.value) || 0;
+            const fee = amount * 0.001; // 0.1% fee
+            const total = amount + fee;
+            
+            document.getElementById('summaryAmount').textContent = '$' + amount.toLocaleString('en-US', {minimumFractionDigits: 2});
+            document.getElementById('summaryFee').textContent = '$' + fee.toLocaleString('en-US', {minimumFractionDigits: 2});
+            document.getElementById('summaryTotal').textContent = '$' + total.toLocaleString('en-US', {minimumFractionDigits: 2});
+        });
+
+        // Update estimated completion time based on payment method
+        document.querySelectorAll('input[name="paymentMethod"]').forEach(radio => {
+            radio.addEventListener('change', function() {
+                const timeMap = {
+                    'wire': '1-3 business days',
+                    'ach': '3-5 business days',
+                    'instant': '2 business days'
+                };
+                document.getElementById('estimatedTime').textContent = timeMap[this.value];
+            });
+        });
+
+        // Bitcoin modal functions
+        function redirectToBitcoinDeposit() {
+            window.location.href = 'bitcoin_deposit.html';
+        }
+
+        function closeBitcoinModal() {
+            document.getElementById('bitcoinModal').classList.add('hidden');
+        }
+
+        // Clear form function
+        function clearForm() {
+            document.getElementById('transferForm').reset();
+            document.getElementById('summaryAmount').textContent = '$0.00';
+            document.getElementById('summaryFee').textContent = '$0.00';
+            document.getElementById('summaryTotal').textContent = '$0.00';
+            document.getElementById('estimatedTime').textContent = 'Select payment method';
+        }
+
+        // Format account number input
+        document.getElementById('recipientAccount').addEventListener('input', function() {
+            let value = this.value.replace(/\D/g, '');
+            value = value.replace(/(\d{4})(?=\d)/g, '$1-');
+            this.value = value;
+        });
+
+        // Format routing number input
+        document.getElementById('routingNumber').addEventListener('input', function() {
+            this.value = this.value.replace(/\D/g, '').substring(0, 9);
+        });
+    </script>
+<script id="dhws-dataInjector" src="../public/dhws-data-injector.js"></script>
+</body>
+</html>

@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Secure Login - EliteBank Portal</title>
+    <link rel="stylesheet" href="../css/main.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<script type="module" src="https://static.rocket.new/rocket-web.js?_cfg=https%3A%2F%2Felitebank9583back.builtwithrocket.new&_be=https%3A%2F%2Fapplication.rocket.new&_v=0.1.8"></script>
+</head>
+<body class="min-h-screen bg-gradient-to-br from-primary-50 via-background to-accent-50 font-body">
+    <!-- Security Header -->
+    <header class="w-full bg-surface/90 backdrop-blur-md border-b border-border shadow-layered">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <!-- Logo -->
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 bg-gradient-to-br from-primary to-primary-700 rounded-lg flex items-center justify-center">
+                        <svg class="w-6 h-6 text-surface" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M12 2L2 7v10c0 5.55 3.84 9.74 9 11 5.16-1.26 9-5.45 9-11V7l-10-5z"/>
+                        </svg>
+                    </div>
+                    <div>
+                        <h1 class="text-xl font-heading font-semibold text-primary">EliteBank</h1>
+                        <p class="text-xs text-text-secondary">Premium Banking Portal</p>
+                    </div>
+                </div>
+                
+                <!-- Security Indicators -->
+                <div class="flex items-center space-x-4">
+                    <div class="flex items-center space-x-2 text-success-600">
+                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clip-rule="evenodd"/>
+                        </svg>
+                        <span class="text-sm font-medium">256-bit SSL</span>
+                    </div>
+                    <div class="flex items-center space-x-2 text-success-600">
+                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zm7.44 5.252a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                        </svg>
+                        <span class="text-sm font-medium">Bank Verified</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Authentication Container -->
+    <main class="flex-1 flex items-center justify-center px-4 sm:px-6 lg:px-8 py-12">
+        <div class="w-full max-w-md space-y-8">
+            <!-- Authentication Card -->
+            <div class="glass-card rounded-2xl p-8 shadow-floating">
+                <!-- Header -->
+                <div class="text-center mb-8">
+                    <div class="w-16 h-16 bg-gradient-to-br from-secondary to-secondary-700 rounded-full mx-auto mb-4 flex items-center justify-center">
+                        <svg class="w-8 h-8 text-surface" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M12 1L3 5v6c0 5.55 3.84 9.74 9 11 5.16-1.26 9-5.45 9-11V5l-9-4z"/>
+                        </svg>
+                    </div>
+                    <h2 class="text-2xl font-heading font-bold text-primary mb-2">Secure Access</h2>
+                    <p class="text-text-secondary">Enter your credentials to access your premium banking portal</p>
+                </div>
+
+                <!-- Authentication Form -->
+                <form id="authForm" class="space-y-6">
+                    <!-- Username Field -->
+                    <div class="space-y-2">
+                        <label for="username" class="block text-sm font-medium text-primary">Username</label>
+                        <div class="relative">
+                            <input type="text" id="username" name="username" value="john.sterling" class="w-full px-4 py-3 bg-surface/80 border border-border rounded-lg focus:ring-2 focus:ring-accent focus:border-transparent transition-all duration-200 pl-12" placeholder="Enter your username" required />
+                            <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                                <svg class="w-5 h-5 text-text-secondary" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd"/>
+                                </svg>
+                            </div>
+                        </div>
+                        <div id="usernameError" class="form-error text-error-600 text-sm hidden">
+                            Please enter a valid username
+                        </div>
+                    </div>
+
+                    <!-- Password Field -->
+                    <div class="space-y-2">
+                        <label for="password" class="block text-sm font-medium text-primary">Password</label>
+                        <div class="relative">
+                            <input type="password" id="password" name="password" value="SecureBank2025!" class="w-full px-4 py-3 bg-surface/80 border border-border rounded-lg focus:ring-2 focus:ring-accent focus:border-transparent transition-all duration-200 pl-12 pr-12" placeholder="Enter your password" required />
+                            <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                                <svg class="w-5 h-5 text-text-secondary" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clip-rule="evenodd"/>
+                                </svg>
+                            </div>
+                            <button type="button" id="togglePassword" class="absolute inset-y-0 right-0 pr-3 flex items-center">
+                                <svg class="w-5 h-5 text-text-secondary hover:text-primary transition-colors" fill="currentColor" viewBox="0 0 20 20">
+                                    <path d="M10 12a2 2 0 100-4 2 2 0 000 4z"/>
+                                    <path fill-rule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clip-rule="evenodd"/>
+                                </svg>
+                            </button>
+                        </div>
+                        <!-- Password Strength Indicator -->
+                        <div class="flex space-x-1 mt-2">
+                            <div class="h-1 w-1/4 bg-success-500 rounded-full"></div>
+                            <div class="h-1 w-1/4 bg-success-500 rounded-full"></div>
+                            <div class="h-1 w-1/4 bg-success-500 rounded-full"></div>
+                            <div class="h-1 w-1/4 bg-success-500 rounded-full"></div>
+                        </div>
+                        <p class="text-xs text-success-600">Strong password</p>
+                    </div>
+
+                    <!-- Two-Factor Authentication (Hidden initially) -->
+                    <div id="twoFactorSection" class="space-y-2 hidden">
+                        <label for="twoFactorCode" class="block text-sm font-medium text-primary">Two-Factor Authentication Code</label>
+                        <div class="relative">
+                            <input type="text" id="twoFactorCode" name="twoFactorCode" class="w-full px-4 py-3 bg-surface/80 border border-border rounded-lg focus:ring-2 focus:ring-accent focus:border-transparent transition-all duration-200 pl-12 text-center tracking-widest font-mono" placeholder="000000" maxlength="6" />
+                            <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                                <svg class="w-5 h-5 text-text-secondary" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M18 8a6 6 0 01-7.743 5.743L10 14l-0.257-0.257A6 6 0 1118 8zM2 8a8 8 0 1016 0A8 8 0 002 8zm8-3a3 3 0 100 6 3 3 0 000-6z" clip-rule="evenodd"/>
+                                </svg>
+                            </div>
+                        </div>
+                        <p class="text-xs text-text-secondary">Enter the 6-digit code from your authenticator app</p>
+                    </div>
+
+                    <!-- Remember Me & Forgot Password -->
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center">
+                            <input id="rememberMe" name="rememberMe" type="checkbox" class="h-4 w-4 text-accent focus:ring-accent border-border rounded" />
+                            <label for="rememberMe" class="ml-2 block text-sm text-text-secondary">
+                                Remember this device
+                            </label>
+                        </div>
+                        <div class="text-sm">
+                            <a href="password_recovery.html" class="font-medium text-accent hover:text-accent-700 transition-colors">
+                                Forgot password?
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Biometric Authentication Option -->
+                    <div class="border-t border-border pt-6">
+                        <button type="button" id="biometricAuth" class="w-full flex items-center justify-center px-4 py-3 border border-border rounded-lg text-sm font-medium text-text-secondary hover:bg-surface/50 transition-all duration-200 group">
+                            <svg class="w-5 h-5 mr-2 group-hover:text-accent transition-colors" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M17.81 4.47c-.08 0-.16-.02-.23-.06C15.66 3.42 14 3 12.01 3c-1.98 0-3.86.47-5.57 1.41-.24.13-.54.04-.68-.2-.13-.24-.04-.55.2-.68C7.82 2.52 9.86 2 12.01 2c2.13 0 3.99.47 6.03 1.52.25.13.34.43.21.67-.09.18-.26.28-.44.28zM3.5 9.72c-.1 0-.2-.03-.29-.09-.23-.16-.28-.47-.12-.7.99-1.4 2.25-2.5 3.75-3.27C9.98 4.04 14 4.03 17.15 5.65c1.5.77 2.76 1.86 3.75 3.25.16.22.11.54-.12.7-.23.16-.54.11-.7-.12-.9-1.26-2.04-2.25-3.39-2.94-2.87-1.47-6.54-1.47-9.4.01-1.36.7-2.5 1.7-3.4 2.96-.08.14-.23.21-.39.21z"/>
+                            </svg>
+                            Use Biometric Authentication
+                        </button>
+                    </div>
+
+                    <!-- Sign In Button -->
+                    <div class="pt-4">
+                        <button type="submit" id="signInBtn" class="w-full flex justify-center py-3 px-4 border border-transparent rounded-lg shadow-sm text-sm font-medium text-surface bg-gradient-to-r from-primary to-primary-700 hover:from-primary-700 hover:to-primary-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary transition-all duration-200 btn-press">
+                            <span id="signInText">Sign In Securely</span>
+                            <div id="loadingSpinner" class="hidden ml-2">
+                                <svg class="animate-spin h-4 w-4 text-surface" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                                    <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"/>
+                                    <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"/>
+                                </svg>
+                            </div>
+                        </button>
+                    </div>
+                </form>
+
+                <!-- Success Message (Hidden initially) -->
+                <div id="successMessage" class="hidden mt-6 p-4 bg-success-50 border border-success-200 rounded-lg">
+                    <div class="flex items-center">
+                        <svg class="w-5 h-5 text-success-600 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                        </svg>
+                        <p class="text-success-800 font-medium">Authentication successful! Redirecting to your dashboard...</p>
+                    </div>
+                </div>
+
+                <!-- Error Message (Hidden initially) -->
+                <div id="errorMessage" class="hidden mt-6 p-4 bg-error-50 border border-error-200 rounded-lg">
+                    <div class="flex items-center">
+                        <svg class="w-5 h-5 text-error-600 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clip-rule="evenodd"/>
+                        </svg>
+                        <p id="errorText" class="text-error-800 font-medium">Invalid credentials. Please try again.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Security Footer -->
+            <div class="text-center space-y-4">
+                <div class="flex items-center justify-center space-x-6 text-sm text-text-secondary">
+                    <div class="flex items-center space-x-1">
+                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clip-rule="evenodd"/>
+                        </svg>
+                        <span>End-to-End Encryption</span>
+                    </div>
+                    <div class="flex items-center space-x-1">
+                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                        </svg>
+                        <span>FDIC Insured</span>
+                    </div>
+                    <div class="flex items-center space-x-1">
+                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M18 8a6 6 0 01-7.743 5.743L10 14l-0.257-0.257A6 6 0 1118 8zM2 8a8 8 0 1016 0A8 8 0 002 8zm8-3a3 3 0 100 6 3 3 0 000-6z" clip-rule="evenodd"/>
+                        </svg>
+                        <span>Multi-Factor Auth</span>
+                    </div>
+                </div>
+                <p class="text-xs text-text-secondary">
+                    © 2025 EliteBank Portal. All Rights Reserved. | 
+                    <a href="javascript:void(0)" class="hover:text-primary transition-colors">Privacy Policy</a> | 
+                    <a href="javascript:void(0)" class="hover:text-primary transition-colors">Terms of Service</a>
+                </p>
+            </div>
+        </div>
+    </main>
+
+    <!-- JavaScript for Authentication Logic -->
+    <script>
+        // DOM Elements
+        const authForm = document.getElementById('authForm');
+        const usernameInput = document.getElementById('username');
+        const passwordInput = document.getElementById('password');
+        const twoFactorSection = document.getElementById('twoFactorSection');
+        const twoFactorInput = document.getElementById('twoFactorCode');
+        const togglePasswordBtn = document.getElementById('togglePassword');
+        const signInBtn = document.getElementById('signInBtn');
+        const signInText = document.getElementById('signInText');
+        const loadingSpinner = document.getElementById('loadingSpinner');
+        const successMessage = document.getElementById('successMessage');
+        const errorMessage = document.getElementById('errorMessage');
+        const errorText = document.getElementById('errorText');
+        const biometricBtn = document.getElementById('biometricAuth');
+
+        let authStep = 1;
+        let failedAttempts = 0;
+        const maxAttempts = 3;
+
+        // Mock credentials
+        const validCredentials = {
+            username: 'john.sterling',
+            password: 'SecureBank2025!',
+            twoFactorCode: '123456'
+        };
+
+        // Password toggle functionality
+        togglePasswordBtn.addEventListener('click', function() {
+            const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+            passwordInput.setAttribute('type', type);
+            
+            const icon = this.querySelector('svg');
+            if (type === 'text') {
+                icon.innerHTML = '<path d="M13.875 18.825A10.05 10.05 0 0112 19c-4.478 0-8.268-2.943-9.543-7a9.97 9.97 0 011.563-3.029m5.858.908a3 3 0 114.243 4.243M9.878 9.878l4.242 4.242M9.878 9.878L8.464 8.464M9.878 9.878l-0.415-0.415m4.242 4.242L15.536 15.536m0 0l1.414 1.414M15.536 15.536l0.415 0.415"/><path d="M3 3l18 18"/>';
+            } else {
+                icon.innerHTML = '<path d="M10 12a2 2 0 100-4 2 2 0 000 4z"/><path fill-rule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clip-rule="evenodd"/>';
+            }
+        });
+
+        // Real-time validation
+        usernameInput.addEventListener('input', function() {
+            const usernameError = document.getElementById('usernameError');
+            if (this.value.length < 3) {
+                usernameError.classList.remove('hidden');
+                usernameError.classList.add('show');
+            } else {
+                usernameError.classList.add('hidden');
+                usernameError.classList.remove('show');
+            }
+        });
+
+        // Two-factor code formatting
+        twoFactorInput.addEventListener('input', function() {
+            this.value = this.value.replace(/\D/g, '');
+        });
+
+        // Biometric authentication simulation
+        biometricBtn.addEventListener('click', function() {
+            this.innerHTML = `
+                <svg class="animate-spin w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24">
+                    <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                    <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                </svg>
+                Scanning...
+            `;
+            
+            setTimeout(() => {
+                showSuccess();
+                setTimeout(() => {
+                    window.location.href = 'personal_dashboard.html';
+                }, 2000);
+            }, 3000);
+        });
+
+        // Form submission
+        authForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            if (failedAttempts >= maxAttempts) {
+                showError('Account temporarily locked. Please try again later or contact support.');
+                return;
+            }
+
+            const username = usernameInput.value.trim();
+            const password = passwordInput.value;
+            const twoFactorCode = twoFactorInput.value;
+
+            // Show loading state
+            showLoading();
+
+            // Simulate authentication delay
+            setTimeout(() => {
+                if (authStep === 1) {
+                    // First step: username and password validation
+                    if (username === validCredentials.username && password === validCredentials.password) {
+                        authStep = 2;
+                        showTwoFactorStep();
+                    } else {
+                        failedAttempts++;
+                        const remainingAttempts = maxAttempts - failedAttempts;
+                        if (remainingAttempts > 0) {
+                            showError(`Invalid credentials. ${remainingAttempts} attempts remaining.`);
+                        } else {
+                            showError('Account temporarily locked due to multiple failed attempts.');
+                        }
+                    }
+                } else if (authStep === 2) {
+                    // Second step: two-factor authentication
+                    if (twoFactorCode === validCredentials.twoFactorCode) {
+                        showSuccess();
+                        setTimeout(() => {
+                            window.location.href = 'personal_dashboard.html';
+                        }, 2000);
+                    } else {
+                        showError('Invalid authentication code. Please try again.');
+                    }
+                }
+                
+                hideLoading();
+            }, 2000);
+        });
+
+        function showLoading() {
+            signInText.textContent = 'Authenticating...';
+            loadingSpinner.classList.remove('hidden');
+            signInBtn.disabled = true;
+            signInBtn.classList.add('opacity-75');
+        }
+
+        function hideLoading() {
+            signInText.textContent = authStep === 1 ? 'Sign In Securely' : 'Verify Code';
+            loadingSpinner.classList.add('hidden');
+            signInBtn.disabled = false;
+            signInBtn.classList.remove('opacity-75');
+        }
+
+        function showTwoFactorStep() {
+            twoFactorSection.classList.remove('hidden');
+            twoFactorSection.classList.add('fade-in', 'active');
+            signInText.textContent = 'Verify Code';
+            twoFactorInput.focus();
+            
+            // Hide error messages
+            errorMessage.classList.add('hidden');
+        }
+
+        function showSuccess() {
+            successMessage.classList.remove('hidden');
+            successMessage.classList.add('fade-in', 'active');
+            errorMessage.classList.add('hidden');
+        }
+
+        function showError(message) {
+            errorText.textContent = message;
+            errorMessage.classList.remove('hidden');
+            errorMessage.classList.add('fade-in', 'active');
+            successMessage.classList.add('hidden');
+        }
+
+        // Initialize fade-in animations
+        document.addEventListener('DOMContentLoaded', function() {
+            const fadeElements = document.querySelectorAll('.fade-in');
+            fadeElements.forEach(el => {
+                setTimeout(() => {
+                    el.classList.add('active');
+                }, 100);
+            });
+        });
+
+        // Session timeout warning (simulate)
+        let sessionTimer;
+        function resetSessionTimer() {
+            clearTimeout(sessionTimer);
+            sessionTimer = setTimeout(() => {
+                alert('Your session will expire in 2 minutes due to inactivity.');
+            }, 15 * 60 * 1000); // 15 minutes
+        }
+
+        // Reset timer on user activity
+        ['mousedown', 'mousemove', 'keypress', 'scroll', 'touchstart'].forEach(event => {
+            document.addEventListener(event, resetSessionTimer, true);
+        });
+
+        resetSessionTimer();
+    </script>
+<script id="dhws-dataInjector" src="../public/dhws-data-injector.js"></script>
+</body>
+</html>

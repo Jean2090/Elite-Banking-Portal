@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Investment Portfolio - EliteBank Portal</title>
+    <link rel="stylesheet" href="../css/main.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<script type="module" src="https://static.rocket.new/rocket-web.js?_cfg=https%3A%2F%2Felitebank9583back.builtwithrocket.new&_be=https%3A%2F%2Fapplication.rocket.new&_v=0.1.8"></script>
+</head>
+<body class="min-h-screen bg-gradient-to-br from-primary-50 via-background to-accent-50 font-body">
+    <!-- Dashboard Header -->
+    <header class="w-full bg-surface/90 backdrop-blur-md border-b border-border shadow-layered sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <!-- Logo & Welcome -->
+                 <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 bg-gradient-to-br from-primary-600 to-primary-800 rounded-lg flex items-center justify-center">
+                        <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M12 2L2 7v10c0 5.55 3.84 9.74 9 11 5.16-1.26 9-5.45 9-11V7l-10-5z"/>
+                            <path d="M9 12l2 2 4-4" stroke="currentColor" stroke-width="2" fill="none"/>
+                        </svg>
+                    </div>
+                    <div>
+                        <h1 class="text-xl font-bold text-primary-800">Elite Banking</h1>
+                        <p class="text-xs text-secondary-500">Secure Banking Portal</p>
+                    </div>
+                </div>
+
+                <!-- Navigation & User Profile -->
+                <div class="flex items-center space-x-6">
+                    <!-- Quick Navigation -->
+                    <nav class="hidden md:flex items-center space-x-4">
+                        <a href="personal_dashboard.html" class="px-3 py-2 text-sm font-medium text-text-secondary hover:text-primary transition-colors">
+                            Dashboard
+                        </a>
+                        <a href="accounts_overview.html" class="px-3 py-2 text-sm font-medium text-text-secondary hover:text-primary transition-colors">
+                            Accounts
+                        </a>
+                        <a href="C:\Users\Shedrach\Videos\elitebank_portal\Files\pages\transfer_payment.html" class="px-3 py-2 text-sm font-medium text-text-secondary hover:text-primary transition-colors">
+                            Transfers
+                        </a>
+                        <a href="investment_portfolio.html" class="px-3 py-2 text-sm font-medium text-primary bg-primary-50 rounded-lg">
+                            Investments
+                        </a>
+                    </nav>
+
+                    <!-- Notifications -->
+                    <div class="relative">
+                        <button id="notificationBtn" class="relative p-2 text-text-secondary hover:text-primary transition-colors" onclick="window.location.href='notifications_center.html'">
+                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
+                                <path d="M10 2a6 6 0 00-6 6v3.586l-.707.707A1 1 0 004 14h12a1 1 0 00.707-1.707L16 11.586V8a6 6 0 00-6-6zM10 18a3 3 0 01-3-3h6a3 3 0 01-3 3z"/>
+                            </svg>
+                            <span class="absolute -top-1 -right-1 h-4 w-4 bg-error-500 text-surface text-xs rounded-full flex items-center justify-center">2</span>
+                        </button>
+                    </div>
+
+                    <!-- User Profile -->
+                    <div class="flex items-center space-x-3">
+                        <div class="hidden sm:block text-right">
+                            <p class="text-sm font-medium text-primary">John Sterling</p>
+                            <p class="text-xs text-text-secondary">Premium Member</p>
+                        </div>
+                        <div class="relative">
+                            <button id="profileBtn" class="w-10 h-10 rounded-full overflow-hidden border-2 border-secondary-200 hover:border-secondary-400 transition-colors">
+                                <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Profile" class="w-full h-full object-cover" onerror="this.src='https://images.unsplash.com/photo-1584824486509-112e4181ff6b?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'; this.onerror=null;" />
+                            </button>
+                            <!-- Profile Dropdown -->
+                            <div id="profileDropdown" class="hidden absolute right-0 mt-2 w-48 bg-surface rounded-lg shadow-floating border border-border z-50">
+                                <div class="py-2">
+                                    <a href="javascript:void(0)" class="block px-4 py-2 text-sm text-text-primary hover:bg-primary-50 transition-colors">
+                                        Account Settings
+                                    </a>
+                                    <a href="javascript:void(0)" class="block px-4 py-2 text-sm text-text-primary hover:bg-primary-50 transition-colors">
+                                        Security
+                                    </a>
+                                    <a href="javascript:void(0)" class="block px-4 py-2 text-sm text-text-primary hover:bg-primary-50 transition-colors">
+                                        Support
+                                    </a>
+                                    <hr class="my-2 border-border" />
+                                    <button id="logoutBtn" class="block w-full text-left px-4 py-2 text-sm text-error-600 hover:bg-error-50 transition-colors">
+                                        Sign Out
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Investment Portfolio Content -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <!-- Portfolio Overview Section -->
+        <section class="mb-8">
+            <div class="glass-card rounded-2xl p-6 shadow-floating fade-in">
+                <div class="flex items-center justify-between mb-6">
+                    <div>
+                        <h2 class="text-3xl font-heading font-bold text-primary">Investment Portfolio</h2>
+                        <p class="text-text-secondary mt-1">Comprehensive portfolio analysis and management</p>
+                    </div>
+                    <div class="flex items-center space-x-4">
+                        <div class="text-right">
+                            <p class="text-sm text-text-secondary">Total Portfolio Value</p>
+                            <p class="text-3xl font-bold text-text-primary data-mono">$342,156.73</p>
+                        </div>
+                        <div class="px-4 py-2 bg-success-100 text-success-800 rounded-lg">
+                            <span class="text-sm font-medium">+8.2% YTD</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Portfolio Performance Chart -->
+                <div class="h-80 bg-gradient-to-br from-primary-50 to-accent-50 rounded-xl relative overflow-hidden">
+                    <svg class="w-full h-full absolute inset-0" viewBox="0 0 800 320" preserveAspectRatio="none">
+                        <defs>
+                            <linearGradient id="portfolioGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+                                <stop offset="0%" style="stop-color:#4A90E2;stop-opacity:0.4"/>
+                                <stop offset="100%" style="stop-color:#4A90E2;stop-opacity:0"/>
+                            </linearGradient>
+                        </defs>
+                        <path d="M0,250 Q100,200 200,220 T400,180 T600,140 T800,120" stroke="#4A90E2" stroke-width="4" fill="none"/>
+                        <path d="M0,250 Q100,200 200,220 T400,180 T600,140 T800,120 L800,320 L0,320 Z" fill="url(#portfolioGradient)"/>
+                        <circle cx="200" cy="220" r="6" fill="#4A90E2"/>
+                        <circle cx="400" cy="180" r="6" fill="#4A90E2"/>
+                        <circle cx="600" cy="140" r="6" fill="#4A90E2"/>
+                        <circle cx="800" cy="120" r="6" fill="#4A90E2"/>
+                    </svg>
+                    
+                    <!-- Chart Controls -->
+                    <div class="absolute top-4 right-4 flex space-x-2">
+                        <button class="px-3 py-1 text-xs font-medium text-text-secondary hover:bg-surface/50 rounded-lg transition-colors">1M</button>
+                        <button class="px-3 py-1 text-xs font-medium text-text-secondary hover:bg-surface/50 rounded-lg transition-colors">3M</button>
+                        <button class="px-3 py-1 text-xs font-medium bg-primary text-surface rounded-lg">6M</button>
+                        <button class="px-3 py-1 text-xs font-medium text-text-secondary hover:bg-surface/50 rounded-lg transition-colors">1Y</button>
+                        <button class="px-3 py-1 text-xs font-medium text-text-secondary hover:bg-surface/50 rounded-lg transition-colors">ALL</button>
+                    </div>
+
+                    <!-- Performance Metrics -->
+                    <div class="absolute bottom-4 left-4 grid grid-cols-3 gap-4">
+                        <div class="bg-surface/90 backdrop-blur-sm rounded-lg p-3">
+                            <p class="text-xs text-text-secondary">Total Return</p>
+                            <p class="text-lg font-heading font-semibold text-success-600">+$25,847</p>
+                        </div>
+                        <div class="bg-surface/90 backdrop-blur-sm rounded-lg p-3">
+                            <p class="text-xs text-text-secondary">Daily Change</p>
+                            <p class="text-lg font-heading font-semibold text-success-600">+1.24%</p>
+                        </div>
+                        <div class="bg-surface/90 backdrop-blur-sm rounded-lg p-3">
+                            <p class="text-xs text-text-secondary">Risk Score</p>
+                            <p class="text-lg font-heading font-semibold text-warning-600">Moderate</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Asset Allocation & Holdings Grid -->
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            <!-- Asset Allocation -->
+            <div class="lg:col-span-1">
+                <section class="glass-card rounded-2xl p-6 shadow-floating fade-in mb-8">
+                    <h3 class="text-xl font-heading font-semibold text-primary mb-6">Asset Allocation</h3>
+                    
+                    <!-- Pie Chart Placeholder -->
+                    <div class="relative w-48 h-48 mx-auto mb-6">
+                        <svg class="w-full h-full transform -rotate-90" viewBox="0 0 200 200">
+                            <circle cx="100" cy="100" r="80" fill="none" stroke="#E5EFFD" stroke-width="20"/>
+                            <circle cx="100" cy="100" r="80" fill="none" stroke="#4A90E2" stroke-width="20" stroke-dasharray="251.2" stroke-dashoffset="75.36" stroke-linecap="round"/>
+                            <circle cx="100" cy="100" r="80" fill="none" stroke="#10B981" stroke-width="20" stroke-dasharray="125.6" stroke-dashoffset="200.96" stroke-linecap="round"/>
+                            <circle cx="100" cy="100" r="80" fill="none" stroke="#F59E0B" stroke-width="20" stroke-dasharray="62.8" stroke-dashoffset="263.76" stroke-linecap="round"/>
+                        </svg>
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <div class="text-center">
+                                <p class="text-2xl font-heading font-bold text-primary">$342K</p>
+                                <p class="text-xs text-text-secondary">Total Value</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Allocation Legend -->
+                    <div class="space-y-3">
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center space-x-3">
+                                <div class="w-4 h-4 bg-accent rounded-full"></div>
+                                <span class="text-sm text-text-primary">Stocks</span>
+                            </div>
+                            <span class="text-sm font-medium text-primary">70%</span>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center space-x-3">
+                                <div class="w-4 h-4 bg-success rounded-full"></div>
+                                <span class="text-sm text-text-primary">Bonds</span>
+                            </div>
+                            <span class="text-sm font-medium text-primary">25%</span>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center space-x-3">
+                                <div class="w-4 h-4 bg-warning rounded-full"></div>
+                                <span class="text-sm text-text-primary">Real Estate</span>
+                            </div>
+                            <span class="text-sm font-medium text-primary">5%</span>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Risk Analysis -->
+                <section class="glass-card rounded-2xl p-6 shadow-floating fade-in">
+                    <h3 class="text-xl font-heading font-semibold text-primary mb-6">Risk Analysis</h3>
+                    
+                    <div class="space-y-4">
+                        <div>
+                            <div class="flex items-center justify-between mb-2">
+                                <span class="text-sm text-text-secondary">Portfolio Beta</span>
+                                <span class="text-sm font-medium text-primary">1.2</span>
+                            </div>
+                            <div class="w-full bg-border rounded-full h-2">
+                                <div class="bg-accent h-2 rounded-full" style="width: 60%"></div>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <div class="flex items-center justify-between mb-2">
+                                <span class="text-sm text-text-secondary">Volatility</span>
+                                <span class="text-sm font-medium text-primary">15.3%</span>
+                            </div>
+                            <div class="w-full bg-border rounded-full h-2">
+                                <div class="bg-warning h-2 rounded-full" style="width: 45%"></div>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <div class="flex items-center justify-between mb-2">
+                                <span class="text-sm text-text-secondary">Sharpe Ratio</span>
+                                <span class="text-sm font-medium text-primary">1.8</span>
+                            </div>
+                            <div class="w-full bg-border rounded-full h-2">
+                                <div class="bg-success h-2 rounded-full" style="width: 80%"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-6 p-4 bg-accent-50 border border-accent-200 rounded-lg">
+                        <div class="flex items-start space-x-3">
+                            <svg class="w-5 h-5 text-accent-600 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"/>
+                            </svg>
+                            <div>
+                                <p class="text-sm font-medium text-accent-800">Risk Assessment</p>
+                                <p class="text-xs text-accent-600 mt-1">Your portfolio shows moderate risk with good diversification across asset classes.</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <!-- Holdings Table -->
+            <div class="lg:col-span-2 space-y-8">
+                <section class="glass-card rounded-2xl p-6 shadow-floating fade-in">
+                    <div class="flex items-center justify-between mb-6">
+                        <h3 class="text-xl font-heading font-semibold text-primary">Current Holdings</h3>
+                        <div class="flex items-center space-x-4">
+                            <select class="px-3 py-1 text-sm border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-accent">
+                                <option>All Assets</option>
+                                <option>Stocks</option>
+                                <option>Bonds</option>
+                                <option>ETFs</option>
+                            </select>
+                            <button class="px-4 py-2 bg-primary text-surface text-sm font-medium rounded-lg hover:bg-primary-700 transition-colors btn-press">
+                                Trade Now
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="overflow-x-auto">
+                        <table class="w-full">
+                            <thead>
+                                <tr class="border-b border-border">
+                                    <th class="text-left py-3 px-2 text-sm font-medium text-text-secondary">Asset</th>
+                                    <th class="text-left py-3 px-2 text-sm font-medium text-text-secondary">Shares</th>
+                                    <th class="text-right py-3 px-2 text-sm font-medium text-text-secondary">Price</th>
+                                    <th class="text-right py-3 px-2 text-sm font-medium text-text-secondary">Value</th>
+                                    <th class="text-right py-3 px-2 text-sm font-medium text-text-secondary">Change</th>
+                                    <th class="text-center py-3 px-2 text-sm font-medium text-text-secondary">Action</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-border">
+                                <tr class="hover:bg-primary-50/50 transition-colors">
+                                    <td class="py-4 px-2">
+                                        <div class="flex items-center space-x-3">
+                                            <div class="w-10 h-10 bg-gradient-to-br from-accent to-accent-700 rounded-lg flex items-center justify-center">
+                                                <span class="text-surface font-mono text-sm">AAPL</span>
+                                            </div>
+                                            <div>
+                                                <p class="text-sm font-medium text-primary">Apple Inc.</p>
+                                                <p class="text-xs text-text-secondary">NASDAQ</p>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="py-4 px-2 text-sm text-text-primary">250</td>
+                                    <td class="py-4 px-2 text-right text-sm font-medium text-primary">$189.45</td>
+                                    <td class="py-4 px-2 text-right text-sm font-medium text-primary">$47,362.50</td>
+                                    <td class="py-4 px-2 text-right text-sm font-medium text-success-600">+2.34%</td>
+                                    <td class="py-4 px-2 text-center">
+                                        <button class="px-3 py-1 text-xs font-medium text-accent hover:bg-accent-50 rounded-lg transition-colors">
+                                            Trade
+                                        </button>
+                                    </td>
+                                </tr>
+
+                                <tr class="hover:bg-primary-50/50 transition-colors">
+                                    <td class="py-4 px-2">
+                                        <div class="flex items-center space-x-3">
+                                            <div class="w-10 h-10 bg-gradient-to-br from-secondary to-secondary-700 rounded-lg flex items-center justify-center">
+                                                <span class="text-surface font-mono text-sm">MSFT</span>
+                                            </div>
+                                            <div>
+                                                <p class="text-sm font-medium text-primary">Microsoft Corp.</p>
+                                                <p class="text-xs text-text-secondary">NASDAQ</p>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="py-4 px-2 text-sm text-text-primary">180</td>
+                                    <td class="py-4 px-2 text-right text-sm font-medium text-primary">$378.92</td>
+                                    <td class="py-4 px-2 text-right text-sm font-medium text-primary">$68,205.60</td>
+                                    <td class="py-4 px-2 text-right text-sm font-medium text-success-600">+1.87%</td>
+                                    <td class="py-4 px-2 text-center">
+                                        <button class="px-3 py-1 text-xs font-medium text-accent hover:bg-accent-50 rounded-lg transition-colors">
+                                            Trade
+                                        </button>
+                                    </td>
+                                </tr>
+
+                                <tr class="hover:bg-primary-50/50 transition-colors">
+                                    <td class="py-4 px-2">
+                                        <div class="flex items-center space-x-3">
+                                            <div class="w-10 h-10 bg-gradient-to-br from-success to-success-700 rounded-lg flex items-center justify-center">
+                                                <span class="text-surface font-mono text-sm">VTSAX</span>
+                                            </div>
+                                            <div>
+                                                <p class="text-sm font-medium text-primary">Total Stock Market</p>
+                                                <p class="text-xs text-text-secondary">Vanguard</p>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="py-4 px-2 text-sm text-text-primary">1,250</td>
+                                    <td class="py-4 px-2 text-right text-sm font-medium text-primary">$112.48</td>
+                                    <td class="py-4 px-2 text-right text-sm font-medium text-primary">$140,600.00</td>
+                                    <td class="py-4 px-2 text-right text-sm font-medium text-success-600">+0.95%</td>
+                                    <td class="py-4 px-2 text-center">
+                                        <button class="px-3 py-1 text-xs font-medium text-accent hover:bg-accent-50 rounded-lg transition-colors">
+                                            Trade
+                                        </button>
+                                    </td>
+                                </tr>
+
+                                <tr class="hover:bg-primary-50/50 transition-colors">
+                                    <td class="py-4 px-2">
+                                        <div class="flex items-center space-x-3">
+                                            <div class="w-10 h-10 bg-gradient-to-br from-warning to-warning-700 rounded-lg flex items-center justify-center">
+                                                <span class="text-surface font-mono text-sm">BND</span>
+                                            </div>
+                                            <div>
+                                                <p class="text-sm font-medium text-primary">Total Bond Market</p>
+                                                <p class="text-xs text-text-secondary">Vanguard</p>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="py-4 px-2 text-sm text-text-primary">850</td>
+                                    <td class="py-4 px-2 text-right text-sm font-medium text-primary">$78.34</td>
+                                    <td class="py-4 px-2 text-right text-sm font-medium text-primary">$66,589.00</td>
+                                    <td class="py-4 px-2 text-right text-sm font-medium text-error-600">-0.15%</td>
+                                    <td class="py-4 px-2 text-center">
+                                        <button class="px-3 py-1 text-xs font-medium text-accent hover:bg-accent-50 rounded-lg transition-colors">
+                                            Trade
+                                        </button>
+                                    </td>
+                                </tr>
+
+                                <tr class="hover:bg-primary-50/50 transition-colors">
+                                    <td class="py-4 px-2">
+                                        <div class="flex items-center space-x-3">
+                                            <div class="w-10 h-10 bg-gradient-to-br from-primary to-primary-700 rounded-lg flex items-center justify-center">
+                                                <span class="text-surface font-mono text-sm">VNQ</span>
+                                            </div>
+                                            <div>
+                                                <p class="text-sm font-medium text-primary">Real Estate ETF</p>
+                                                <p class="text-xs text-text-secondary">Vanguard</p>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="py-4 px-2 text-sm text-text-primary">200</td>
+                                    <td class="py-4 px-2 text-right text-sm font-medium text-primary">$94.50</td>
+                                    <td class="py-4 px-2 text-right text-sm font-medium text-primary">$18,900.00</td>
+                                    <td class="py-4 px-2 text-right text-sm font-medium text-success-600">+3.21%</td>
+                                    <td class="py-4 px-2 text-center">
+                                        <button class="px-3 py-1 text-xs font-medium text-accent hover:bg-accent-50 rounded-lg transition-colors">
+                                            Trade
+                                        </button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+
+                <!-- Market News & Research -->
+                <section class="glass-card rounded-2xl p-6 shadow-floating fade-in">
+                    <div class="flex items-center justify-between mb-6">
+                        <h3 class="text-xl font-heading font-semibold text-primary">Market News & Research</h3>
+                        <button class="text-sm font-medium text-accent hover:text-accent-700 transition-colors">
+                            View All News
+                        </button>
+                    </div>
+
+                    <div class="space-y-4">
+                        <div class="flex items-start space-x-4 p-4 border border-border rounded-lg hover:bg-primary-50/50 transition-colors">
+                            <div class="w-2 h-2 bg-success rounded-full mt-3 flex-shrink-0"></div>
+                            <div class="flex-1">
+                                <p class="text-sm font-medium text-primary">Q4 Earnings Beat Expectations</p>
+                                <p class="text-xs text-text-secondary mt-1">Apple Inc. reports strong quarterly results with revenue growth of 8.2% year-over-year...</p>
+                                <div class="flex items-center space-x-4 mt-2">
+                                    <span class="text-xs text-text-secondary">Market Watch</span>
+                                    <span class="text-xs text-text-secondary">2 hours ago</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start space-x-4 p-4 border border-border rounded-lg hover:bg-primary-50/50 transition-colors">
+                            <div class="w-2 h-2 bg-warning rounded-full mt-3 flex-shrink-0"></div>
+                            <div class="flex-1">
+                                <p class="text-sm font-medium text-primary">Federal Reserve Policy Update</p>
+                                <p class="text-xs text-text-secondary mt-1">Fed signals potential rate adjustments in response to economic indicators...</p>
+                                <div class="flex items-center space-x-4 mt-2">
+                                    <span class="text-xs text-text-secondary">Reuters</span>
+                                    <span class="text-xs text-text-secondary">4 hours ago</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start space-x-4 p-4 border border-border rounded-lg hover:bg-primary-50/50 transition-colors">
+                            <div class="w-2 h-2 bg-accent rounded-full mt-3 flex-shrink-0"></div>
+                            <div class="flex-1">
+                                <p class="text-sm font-medium text-primary">Tech Sector Analysis</p>
+                                <p class="text-xs text-text-secondary mt-1">Microsoft's cloud division shows continued strong performance in enterprise markets...</p>
+                                <div class="flex items-center space-x-4 mt-2">
+                                    <span class="text-xs text-text-secondary">Bloomberg</span>
+                                    <span class="text-xs text-text-secondary">6 hours ago</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-surface border-t border-border mt-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+            <div class="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
+                <div class="flex items-center space-x-4">
+                    <div class="w-8 h-8 bg-gradient-to-br from-primary to-primary-700 rounded-lg flex items-center justify-center">
+                        <svg class="w-5 h-5 text-surface" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M12 2L2 7v10c0 5.55 3.84 9.74 9 11 5.16-1.26 9-5.45 9-11V7l-10-5z"/>
+                        </svg>
+                    </div>
+                    <div>
+                        <p class="text-sm font-medium text-primary">EliteBank Portal</p>
+                        <p class="text-xs text-text-secondary">Investment Management</p>
+                    </div>
+                </div>
+                
+                <div class="flex items-center space-x-6 text-sm text-text-secondary">
+                    <a href="javascript:void(0)" class="hover:text-primary transition-colors">Privacy Policy</a>
+                    <a href="javascript:void(0)" class="hover:text-primary transition-colors">Terms of Service</a>
+                    <a href="javascript:void(0)" class="hover:text-primary transition-colors">Investment Disclaimer</a>
+                    <a href="javascript:void(0)" class="hover:text-primary transition-colors">Support</a>
+                </div>
+                
+                <p class="text-xs text-text-secondary">
+                    © 2025 EliteBank Portal. All Rights Reserved.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript for Investment Portfolio Functionality -->
+    <script>
+        // DOM Elements
+        const profileBtn = document.getElementById('profileBtn');
+        const profileDropdown = document.getElementById('profileDropdown');
+        const notificationBtn = document.getElementById('notificationBtn');
+        const logoutBtn = document.getElementById('logoutBtn');
+
+        // Profile dropdown toggle
+        profileBtn.addEventListener('click', function(e) {
+            e.stopPropagation();
+            profileDropdown.classList.toggle('hidden');
+        });
+
+        // Close dropdown when clicking outside
+        document.addEventListener('click', function() {
+            profileDropdown.classList.add('hidden');
+        });
+
+        // Prevent dropdown from closing when clicking inside
+        profileDropdown.addEventListener('click', function(e) {
+            e.stopPropagation();
+        });
+
+        // Logout functionality
+        logoutBtn.addEventListener('click', function() {
+            // Clear session data
+            localStorage.removeItem('userSession');
+            sessionStorage.clear();
+            
+            // Show logout confirmation
+            const confirmation = confirm('Are you sure you want to sign out?');
+            if (confirmation) {
+                // Redirect to login page
+                window.location.href = 'login_authentication.html';
+            }
+        });
+
+        // Initialize fade-in animations
+        document.addEventListener('DOMContentLoaded', function() {
+            const fadeElements = document.querySelectorAll('.fade-in');
+            fadeElements.forEach((el, index) => {
+                setTimeout(() => {
+                    el.classList.add('active');
+                }, index * 200);
+            });
+        });
+
+        // Portfolio refresh functionality
+        function refreshPortfolioData() {
+            // Simulate API call to update portfolio values
+            console.log('Refreshing portfolio data...');
+            
+            // Add shimmer effect to key metrics
+            const metrics = document.querySelectorAll('[data-portfolio-value]');
+            metrics.forEach(metric => {
+                metric.classList.add('shimmer');
+                setTimeout(() => {
+                    metric.classList.remove('shimmer');
+                }, 1500);
+            });
+        }
+
+        // Auto-refresh portfolio every 30 seconds
+        setInterval(refreshPortfolioData, 30000);
+
+        // Chart interaction handlers
+        const chartButtons = document.querySelectorAll('[data-chart-period]');
+        chartButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                // Remove active state from all buttons
+                chartButtons.forEach(btn => {
+                    btn.classList.remove('bg-primary', 'text-surface');
+                    btn.classList.add('text-text-secondary', 'hover:bg-surface/50');
+                });
+                
+                // Add active state to clicked button
+                this.classList.remove('text-text-secondary', 'hover:bg-surface/50');
+                this.classList.add('bg-primary', 'text-surface');
+                
+                // Update chart data based on period
+                const period = this.dataset.chartPeriod || this.textContent;
+                updateChartData(period);
+            });
+        });
+
+        function updateChartData(period) {
+            console.log(`Updating chart for period: ${period}`);
+            // In a real application, this would fetch new data and redraw the chart
+        }
+
+        // Trade button functionality
+        document.addEventListener('click', function(e) {
+            if (e.target.textContent === 'Trade') {
+                const symbol = e.target.closest('tr').querySelector('.font-mono').textContent;
+                openTradeModal(symbol);
+            }
+        });
+
+        function openTradeModal(symbol) {
+            // Create and show trade modal
+            const modal = document.createElement('div');
+            modal.className = 'fixed inset-0 bg-primary/50 backdrop-blur-sm z-50 flex items-center justify-center p-4';
+            modal.innerHTML = `
+                <div class="bg-surface rounded-2xl p-6 max-w-md w-full shadow-floating">
+                    <div class="flex items-center justify-between mb-4">
+                        <h3 class="text-lg font-heading font-semibold text-primary">Trade ${symbol}</h3>
+                        <button class="close-modal text-text-secondary hover:text-primary">
+                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"/>
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="space-y-4">
+                        <div class="flex space-x-2">
+                            <button class="flex-1 px-4 py-2 bg-success text-surface text-sm font-medium rounded-lg">Buy</button>
+                            <button class="flex-1 px-4 py-2 border border-border text-text-primary text-sm font-medium rounded-lg">Sell</button>
+                        </div>
+                        <input type="number" placeholder="Quantity" class="w-full px-3 py-2 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-accent">
+                        <div class="flex items-center justify-between text-sm">
+                            <span class="text-text-secondary">Estimated Value:</span>
+                            <span class="font-medium text-primary">$0.00</span>
+                        </div>
+                        <button class="w-full px-4 py-2 bg-primary text-surface text-sm font-medium rounded-lg hover:bg-primary-700 transition-colors">
+                            Place Order
+                        </button>
+                    </div>
+                </div>
+            `;
+            
+            document.body.appendChild(modal);
+            
+            // Close modal functionality
+            modal.querySelector('.close-modal').addEventListener('click', () => {
+                document.body.removeChild(modal);
+            });
+            
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) {
+                    document.body.removeChild(modal);
+                }
+            });
+        }
+
+        // Real-time price updates simulation
+        function simulatePriceUpdates() {
+            const priceElements = document.querySelectorAll('tbody td:nth-child(3)');
+            const changeElements = document.querySelectorAll('tbody td:nth-child(5)');
+            
+            priceElements.forEach((priceEl, index) => {
+                const changeEl = changeElements[index];
+                if (priceEl && changeEl) {
+                    // Simulate small price movements
+                    const currentPrice = parseFloat(priceEl.textContent.replace('$', ''));
+                    const change = (Math.random() - 0.5) * 0.02; // ±1% change
+                    const newPrice = currentPrice * (1 + change);
+                    const changePercent = (change * 100).toFixed(2);
+                    
+                    // Update price
+                    priceEl.textContent = `$${newPrice.toFixed(2)}`;
+                    
+                    // Update change with color
+                    changeEl.textContent = `${changePercent >= 0 ? '+' : ''}${changePercent}%`;
+                    changeEl.className = `py-4 px-2 text-right text-sm font-medium ${changePercent >= 0 ? 'text-success-600' : 'text-error-600'}`;
+                    
+                    // Add flash animation
+                    priceEl.classList.add('animate-pulse');
+                    setTimeout(() => {
+                        priceEl.classList.remove('animate-pulse');
+                    }, 1000);
+                }
+            });
+        }
+
+        // Update prices every 10 seconds
+        setInterval(simulatePriceUpdates, 10000);
+
+        // Performance monitoring
+        window.addEventListener('load', function() {
+            const loadTime = performance.now();
+            console.log(`Investment Portfolio loaded in ${loadTime.toFixed(2)}ms`);
+        });
+    </script>
+<script id="dhws-dataInjector" src="../public/dhws-data-injector.js"></script>
+</body>
+</html>
